@@ -1,0 +1,49 @@
+<div id="rough_example" class="carousel-item full">
+    <div class="figure">
+        <style>
+            #test {
+                height: 1000px;
+                width: 1000px;
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
+            }
+        </style>
+        <svg id="test"></svg>
+        <script>
+            function getRandomInt(min, max) {
+                min = Math.ceil(min); // Ensure min is an integer
+                max = Math.floor(max); // Ensure max is an integer
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            var svg = document.getElementById("test");
+            var rc = rough.svg(svg);
+            svg.appendChild(rc.circle(30.15*2, 223.98*2, 15.61*4, {strokeWidth: 3, disableMultiStroke: false, fill: "rgba(255,0,0,0.2)", fillStyle: "solid"}));
+            svg.appendChild(rc.circle(67.7*2, 223.98*2, 43.76*4, {strokeWidth: 3, disableMultiStroke: false, fill: "rgba(0,0,255,0.2)", fillStyle: "solid"}));
+
+            $("#carousel").on("slid.bs.carousel", function () {
+                if (document.getElementById("rough_example").classList.contains("active")) {
+                    if (svg.style.opacity == 0) {
+                        svg.style.opacity = 1;
+                        // Animate the graph for the first time
+                        d3.selectAll("path")
+                            .each(function(d, i) {
+                                var path = d3.select(this);
+                                // Get the length of the path, which we will use for the intial offset to "hide"
+                                // the graph
+                                var length = path.node().getTotalLength();
+                                // Animate the path by setting the initial offset and dasharray and then transition the offset to 0
+                                path
+                                    .attr("stroke-dasharray", length + " " + length)
+                                    .attr("stroke-dashoffset", length)
+                                    .transition()
+                                    .ease(d3.easeLinear)
+                                    .attr("stroke-dashoffset", 0)
+                                    .duration(getRandomInt(500, 2000));
+                            });
+                    }
+                }
+            });
+        </script>
+    </div>
+</div>
