@@ -10,22 +10,34 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <style>
+
+            @font-face {
+                font-family: FuturaHandwritten;
+                src: url(assets/FuturaHandwritten.ttf);
+            }
+
+            @font-face {
+                font-family: SourGummy;
+                src: url(assets/SourGummy-VariableFont_wdth,wght.ttf);
+            }
+
             html, body, form {
                 margin: 0;
                 height: 100dvh;
                 overflow: hidden;
                 touch-action: none;
+                font-family: SourGummy;
             }
 
             .figure {
-                background-color: white;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
-                height: calc(100% - 150px);
-                padding: 50px 15%;
                 text-align: center;
+                height: 100vh;
+                width: 100vw;
+                position: relative;
             }
 
             .full {
@@ -231,11 +243,105 @@
             #final {
                 display: none;
             }
+
+
+
+
+            .text-content {
+                font-size: 2em;
+                color: black;
+            }
+
+            .button {
+                font-size: 2em;
+                color: black;
+            }
+
+            .button:hover {
+                cursor: pointer;
+            }
+
+
         </style>
     </head>
     <body>
         {%- include loader.html -%}
         <script>
+
+            function create_button(parent_id, id, text, x, y, w, h) {
+                var bc = d3.select("#"+parent_id).append("g").attr("id", id).attr("class", "button");
+                var button_container = document.getElementById(id);
+                var rc = rough.svg(button_container);
+                var button = rc.rectangle(x, y, w, h,
+                    {
+                        fill: "rgba(255,255,255,1)",
+                        fillStyle: "solid",
+                        strokeWidth: "3"
+                    }
+                );
+                button_container.appendChild(button.children[0]);
+                button_container.appendChild(button.children[0]);
+                
+                bc.append("text")
+                    .attr("text-anchor", "middle")
+                    .attr("dominant-baseline", "central")
+                    .attr("x", x+w/2)
+                    .attr("y", y+h/2)
+                    .text(text);
+
+                d3.select("#"+id)
+                    .on("mouseover", function(event, d) {
+                        d3.select("#"+id+">path").style("fill", "black");
+                        d3.select("#"+id+">text").style("fill", "white");
+                    })
+                    .on("mouseout", function(event, d) {
+                        d3.select("#"+id+">path").style("fill", "white");
+                        d3.select("#"+id+">text").style("fill", "black");
+                    });
+            }
+
+            function create_slider(id) {
+                var bar_container = document.getElementById(id+"_bar");
+                var rc = rough.svg(bar_container);
+                var bar = rc.rectangle(200, 750, 600, 50, {
+                    fill: "white",
+                    strokeWidth: "3"
+                });
+                bar_container.appendChild(bar.children[0]);
+                bar_container.appendChild(bar.children[0]);
+
+                var cursor_container = document.getElementById(id+"_cursor");
+                var rc = rough.svg(cursor_container);
+                var cursor = rc.rectangle(490, 745, 20, 60, {
+                    fill: "black",
+                    fillStyle: "solid",
+                    strokeWidth: "3"
+                });
+                cursor_container.appendChild(cursor.children[0]);
+                cursor_container.appendChild(cursor.children[0]);
+                
+                d3.select("#"+id+"_cursor").call(
+                    d3.drag()
+                        .on("start", dragstart)
+                        .on("drag", dragged)
+                        .on("end", dragend)
+                );
+
+                function dragstart(event, d) {
+                    d3.select(this).style("cursor", "grabbing");
+                }
+
+                function dragged(event, d) {
+                    var cursor_pos = Math.min(Math.max(200, event.x), 800)
+                    d3.select(this).attr("transform", "translate(" + String(cursor_pos-500) + ")");
+                    d3.select("#overlap").text(String(Math.round((cursor_pos-200)/(800-200)*100))+"%");
+                }
+
+                function dragend(event, d) {
+                    d3.select(this).style("cursor", "grab");
+                }
+            }
+
             function create_interactive_euler_diagram(id, where, data, dim, downscale, bottom_y, top_y, overlap_output, interactive) {
                 var shift_h = dim/2;
                 var shift_v = dim/2;
@@ -382,17 +488,11 @@
 					<button type="button" data-bs-target="#carousel" data-bs-slide-to="18" aria-label="Slide 19"></button>
                 </div>
                 <div class="carousel-inner full">
-                    {%- include slides/consent.html -%}
-                    {%- include slides/euler_diagram_explanation.html -%}
-                    {%- include slides/rough_example.html -%}
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                    {%- include slides/welcome.html -%}
+                    {%- include slides/introduction/main.html -%}
+                    {%- include slides/euler_diagram_explanation/main.html -%}
+                    {%- include slides/interpretability/main.html -%}
+                    {%- include slides/build_your_own/main.html -%}
                 </div>
             </div>
         </form>

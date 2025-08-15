@@ -1,0 +1,69 @@
+<svg id="figure" viewBox="0 0 1000 1000">
+    <g id="text-content">
+        <text x=100 y=50 font-size=2em>Euler diagrams are a similar representation where the areas are</text>
+        <text x=100 y=100 font-size=2em>scaled proportionally to the number of elements in each</text>
+        <text x=100 y=150 font-size=2em>category.</text>
+    </g>
+    <g id="diagram"></g>
+</svg>
+
+<script>
+    $("#carousel").on("slid.bs.carousel", function () {
+        if (document.getElementById("euler_diagram_explanation").classList.contains("active")) {
+            if (euler_diagram_explanation_loaded == false) {
+                
+                var diagram = document.getElementById("diagram");
+                var rc = rough.svg(diagram);
+                var circle1 = rc.circle(30.15*5+260, 500, 15.61*10, {strokeWidth: 3, disableMultiStroke: true, fill: "rgba(255,0,0,0.2)", fillStyle: "solid"});
+                var circle2 = rc.circle(67.7*5+260, 500, 43.76*10, {strokeWidth: 3, disableMultiStroke: true, fill: "rgba(0,0,255,0.2)", fillStyle: "solid"});
+                diagram.appendChild(circle1.children[0]);
+                diagram.appendChild(circle2.children[0]);
+                diagram.appendChild(circle1.children[0]);
+                diagram.appendChild(circle2.children[0]);
+                
+                // Animate the graph for the first time
+                d3.selectAll("path")
+                    .each(function(d, i) {
+                        var path = d3.select(this);
+                        // Get the length of the path, which we will use for the intial offset to "hide"
+                        // the graph
+                        var length = path.node().getTotalLength();
+                        // Animate the path by setting the initial offset and dasharray and then transition the offset to 0
+                        path
+                            .attr("stroke-dasharray", length + " " + length)
+                            .attr("stroke-dashoffset", length)
+                            .transition()
+                            .ease(d3.easeLinear)
+                            .attr("stroke-dashoffset", 0)
+                            .duration(getRandomInt(1000, 4000));
+                    });
+                
+                var svg = d3.select("#figure");
+                svg.style("opacity", 1);
+                
+
+                /*
+                var annotation = svg.append("g");
+                var line_connector = annotation.append("g");
+                
+                line_connector.append("path")
+                    .attr("d", line([[67.7*5+100+100, 500-100],[67.7*5+100+200, 500-200]])+line([[67.7*5+100+200, 500-200],[67.7*5+100+250, 500-200]]))
+                    .attr("stroke", "grey")
+                    .attr("stroke-dasharray", 4)
+                    .attr("stroke-width", 2);
+
+                annotation.append("text")
+                    .text("This is text.")
+                    .attr("x", 67.7*5+100+250+10)
+                    .attr("y", 500-200)
+                    .attr("font-size", "2em")
+                    .attr("fill", "grey")
+                    .attr("dominant-baseline", "central");
+                */
+
+                euler_diagram_explanation_loaded = true;
+            }
+        }
+    });
+
+</script>
