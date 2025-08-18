@@ -147,7 +147,7 @@
 
         var cat_container = document.getElementById("cat_circle");
         var rc = rough.svg(cat_container);
-        var cat = rc.circle(400, 500, 190*2, {
+        var cat = rc.circle(0, 0, 190*2, {
             fill: "rgba(255,0,0,0.2)",
             fillStyle: "solid",
             strokeWidth: "3"
@@ -157,7 +157,7 @@
 
         var dog_container = document.getElementById("dog_circle");
         var rc = rough.svg(dog_container);
-        var dog = rc.circle(600, 500, 190*2, {
+        var dog = rc.circle(0, 0, 190*2, {
             fill: "rgba(0,0,255,0.2)",
             fillStyle: "solid",
             strokeWidth: "3"
@@ -166,6 +166,8 @@
         dog_container.appendChild(dog.children[0]);
 
         d3.selectAll(".ede_stage0").style("display", "block");
+        d3.select("#cat_circle").attr("transform", "translate(400, 500)");
+        d3.select("#dog_circle").attr("transform", "translate(600, 500)");
 
         create_button("table_buttons", "table_next", "Next", 450, 850, 100, 50);
         d3.select("#table_next")
@@ -181,14 +183,8 @@
                 d3.selectAll(".ede_stage2").style("display", "block").style("opacity", "1");
                 d3.select("#num_middle").attr("transform", "translate(-45, 0)");
                 d3.select("#num_right").attr("transform", "translate(-25, 0)");
-                d3.select("#cat_circle")
-                    .attr("transform", "translate(-42.8043, 0) scale(0.87836632)")
-                    .style("transform-origin", "center")
-                    .style("transform-box", "fill-box");    
-                d3.select("#dog_circle")
-                    .attr("transform", "translate(14.7972, 0) scale(1.15005105)")
-                    .style("transform-origin", "center")
-                    .style("transform-box", "fill-box");
+                d3.select("#cat_circle").attr("transform", "scale(0.87836632) translate(455.390866990437, 569.238583738047) translate(-48.731718219797, 0)");
+                d3.select("#dog_circle").attr("transform", "scale(1.15005105) translate(521.71597078234, 434.763308985284) translate(12.8665592714341, 0)");
             });
 
         create_button("euler_buttons", "euler_next", "Next", 450, 850, 100, 50);
@@ -203,8 +199,8 @@
             .on("click", function(event, d) {
                 d3.selectAll(".ede_stage3").style("display", "none");
                 d3.selectAll(".ede_stage4").style("display", "block").style("opacity", "1");
-                d3.select("#cat_circle").attr("transform", "translate(100, 0) scale(0.87836632)");
-                d3.select("#dog_circle").attr("transform", "translate(-100, 0) scale(1.15005105)");
+                d3.select("#cat_circle").attr("transform", "scale(0.87836632) translate(569.238583738047, 569.238583738047)");
+                d3.select("#dog_circle").attr("transform", "scale(1.15005105) translate(434.763308985284, 434.763308985284)");
             });
         
         create_button("clarification_buttons", "clarification_next", "Next", 450, 850, 100, 50);

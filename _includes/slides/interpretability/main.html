@@ -67,7 +67,7 @@
 
         var left_container = document.getElementById("left_circle");
         var rc = rough.svg(left_container);
-        var left = rc.circle(400, 500, 190*2, {
+        var left = rc.circle(0, 0, 190*2, {
             fill: "rgba(255,0,0,0.2)",
             fillStyle: "solid",
             strokeWidth: "3"
@@ -77,7 +77,7 @@
 
         var right_container = document.getElementById("right_circle");
         var rc = rough.svg(right_container);
-        var right = rc.circle(600, 500, 190*2, {
+        var right = rc.circle(0, 0, 190*2, {
             fill: "rgba(0,0,255,0.2)",
             fillStyle: "solid",
             strokeWidth: "3"
@@ -87,6 +87,8 @@
 
         d3.selectAll(".i_stage0").style("display", "block");
         d3.selectAll(".i_stage0").style("opacity", "1");
+        d3.select("#left_circle").attr("transform", "translate(400, 500)");
+        d3.select("#right_circle").attr("transform", "translate(600, 500)");
 
         create_slider("example0");
         create_slider("example1");
@@ -104,14 +106,8 @@
                 d3.selectAll(".i_stage1").style("display", "none");
                 d3.selectAll(".i_stage2").style("display", "block").style("opacity", "1");
                 d3.select("#overlap").attr("transform", "translate(-45, 0)").text("X%");
-                d3.select("#left_circle")
-                    .attr("transform", "translate(-42.8043, 0) scale(0.87836632)")
-                    .style("transform-origin", "center")
-                    .style("transform-box", "fill-box");    
-                d3.select("#right_circle")
-                    .attr("transform", "translate(14.7972, 0) scale(1.15005105)")
-                    .style("transform-origin", "center")
-                    .style("transform-box", "fill-box");
+                d3.select("#left_circle").attr("transform", "scale(0.87836632) translate(455.390866990437, 569.238583738047) translate(-48.731718219797, 0)");
+                d3.select("#right_circle").attr("transform", "scale(1.15005105) translate(521.71597078234, 434.763308985284) translate(12.8665592714341, 0)");
             });
 
         create_button("example1_0_buttons", "example1_guess", "Submit", 425, 850, 150, 50);
@@ -130,8 +126,8 @@
                 setTimeout(function() {
                     d3.selectAll(".i_stage0,.i_stage2,.i_stage3").style("display", "none").style("opacity", "0");
                     d3.selectAll(".i_stage1").style("display", "block").style("opacity", "1");
-                    d3.select("#left_circle").attr("transform", null);
-                    d3.select("#right_circle").attr("transform", null);
+                    d3.select("#left_circle").attr("transform", "translate(400, 500)");
+                    d3.select("#right_circle").attr("transform", "translate(600, 500)");
                     d3.select("#overlap").attr("transform", null);
                     
                     d3.select("#example0_next")
@@ -139,14 +135,8 @@
                             d3.selectAll(".i_stage1").style("display", "none");
                             d3.selectAll(".i_stage3").style("display", "block").style("opacity", "1");
                             d3.select("#overlap").attr("transform", "translate(-45, 0)");
-                            d3.select("#left_circle")
-                                .attr("transform", "translate(-42.8043, 0) scale(0.87836632)")
-                                .style("transform-origin", "center")
-                                .style("transform-box", "fill-box");    
-                            d3.select("#right_circle")
-                                .attr("transform", "translate(14.7972, 0) scale(1.15005105)")
-                                .style("transform-origin", "center")
-                                .style("transform-box", "fill-box");
+                            d3.select("#left_circle").attr("transform", "scale(0.87836632) translate(455.390866990437, 569.238583738047) translate(-48.731718219797, 0)");
+                            d3.select("#right_circle").attr("transform", "scale(1.15005105) translate(521.71597078234, 434.763308985284) translate(12.8665592714341, 0)");
                         });
 
                 }, 1000);
