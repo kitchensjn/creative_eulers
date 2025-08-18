@@ -12,6 +12,12 @@
         height: 100%;
         width: 100%;
     }
+
+    .in_stage1 {
+        display: none;
+        opacity: 0;
+        transition: 1s;
+    }
 </style>
 
 <div id="intro" class="carousel-item full grid-background">
@@ -22,16 +28,32 @@
             <g id="dna"></g>
         </g>
         <g class="text-content">
-            <text x=100 y=375>As geneticists, we are interested in studying the levels</text>
-            <text x=100 y=425>of genetic diversity observed around the world. This</text>
-            <text x=100 y=475>often involves grouping samples by geographic</text>
-            <text x=100 y=525>location and then comparing the genetic variation </text>
-            <text x=100 y=575>found within each individual group versus between the</text>
-            <text x=100 y=625>groups.</text>
-            <text x=100 y=725>A central question then arises… <tspan font-weight="bold">how much overlap in</tspan></text>
-            <text x=100 y=775><tspan font-weight="bold">genetic variation is there between groups?</tspan></text>
+            <g class="in_stage0">
+                <text x=100 y=375>As geneticists, we are interested in studying the levels</text>
+                <text x=100 y=425>of genetic diversity observed around the world. This</text>
+                <text x=100 y=475>often involves grouping samples by geographic</text>
+                <text x=100 y=525>location and then comparing the genetic variation </text>
+                <text x=100 y=575>found within each individual group versus between the</text>
+                <text x=100 y=625>groups.</text>
+                <text x=100 y=725>A central question then arises… <tspan font-weight="bold">how much overlap in</tspan></text>
+                <text x=100 y=775><tspan font-weight="bold">genetic variation is there between groups?</tspan></text>
+            </g>
+            <g class="in_stage1">
+                <text x=100 y=375>This activity includes:</text>
+                <text x=150 y=425>1. An introduction of Euler diagrams</text>
+                <text x=150 y=475>2. Measuring the effectiveness of these</text>
+                <text x=200 y=525>diagrams in communicating the overlap</text>
+                <text x=200 y=575>between groups</text>
+                <text x=150 y=625>3. Questionnaire on the impact of environment and</text> 
+                <text x=200 y=675>genetics on traits</text>
+                <text x=150 y=725>4. Visualizing human genetic diversity with Euler</text>
+                <text x=200 y=775>diagrams</text>
+            </g>
         </g>
-        <g id="intro_buttons" class="buttons"></g>
+        <g>
+            <g id="intro_buttons" class="in_stage0"></g>
+            <g id="overview_buttons" class="in_stage1"></g>
+        </g>
     </svg>
 
     <script>
@@ -40,7 +62,19 @@
         create_button("intro_buttons", "intro_next", "Next", 450, 850, 100, 50);
         d3.select("#intro_next")
             .on("click", function(event,d) {
+                    d3.selectAll(".in_stage0").style("display", "none");
+                    d3.selectAll(".in_stage1").style("display", "block").style("opacity", "1");
+                });
+
+        create_button("overview_buttons", "overview_next", "Next", 450, 850, 100, 50);
+        d3.select("#overview_next")
+            .on("click", function(event,d) {
                     $(".carousel").carousel("next");
+
+                    setTimeout(function() {
+                        d3.selectAll(".in_stage1").style("display", "none").style("opacity", "0");
+                        d3.selectAll(".in_stage0").style("display", "block").style("opacity", "1");
+                    }, 1000);
                 });
 
 
