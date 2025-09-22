@@ -43,10 +43,10 @@
             </g>
             <g class="answers">
                 <g class="byo_stage1">
-                    <text x="500" y="775" text-anchor="middle" dominant-baseline="central">Your diagram shows a <tspan font-weight="bold" dominant-baseline="central">50%</tspan> overlap.</text>
+                    <text x="500" y="775" text-anchor="middle" dominant-baseline="central">Your diagram shows a <tspan id="byo_answer1" font-weight="bold" dominant-baseline="central">50%</tspan> overlap.</text>
                 </g>
                 <g class="byo_stage3">
-                    <text x="500" y="775" text-anchor="middle" dominant-baseline="central">Your diagram shows a <tspan font-weight="bold" dominant-baseline="central">75%</tspan> overlap.</text>
+                    <text x="500" y="775" text-anchor="middle" dominant-baseline="central">Your diagram shows a <tspan id="byo_answer2" font-weight="bold" dominant-baseline="central">75%</tspan> overlap.</text>
                 </g>
             </g>
         </g>
@@ -62,38 +62,6 @@
 
     <script>
 
-        function create_interactive_circle(id, x, y, r, c) {
-            var circle_container = document.getElementById(id);
-            var rc = rough.svg(circle_container);
-            var circle = rc.circle(x, y, r*2, {
-                fill: c,
-                fillStyle: "solid",
-                strokeWidth: "3"
-            });
-            circle_container.appendChild(circle.children[0]);
-            circle_container.appendChild(circle.children[0]);
-
-            d3.select("#"+id).call(
-                d3.drag()
-                    .on("start", dragstart)
-                    .on("drag", dragged)
-                    .on("end", dragend)
-            );
-
-            function dragstart(event, d) {
-                d3.select(this).style("cursor", "grabbing");
-            }
-
-            function dragged(event, d) {
-                var cursor_pos = Math.min(Math.max(200, event.x), 800)
-                d3.select(this).attr("transform", "translate(" + String(cursor_pos-x) + ")");
-            }
-
-            function dragend(event, d) {
-                d3.select(this).style("cursor", "grab");
-            }
-        }
-
         create_interactive_circle("byo0_red_circle", 400, 500, 190, "rgba(255,0,0,0.2)");
         create_interactive_circle("byo0_blue_circle", 600, 500, 190, "rgba(0,0,255,0.2)");
 
@@ -103,6 +71,9 @@
         create_button("byo0_0_buttons", "byo0_guess", "Submit", 425, 850, 150, 50);
         d3.select("#byo0_guess")
             .on("click", function(event, d) {
+                var r_t = get_translation_value("#byo0_red_circle");
+                var b_t = get_translation_value("#byo0_blue_circle");
+                d3.select("#byo_answer1").text(String(Math.round((calc_percentage_overlap(400+r_t, 190, 600+b_t, 190) * 100))) + "%");
                 d3.selectAll(".byo_stage0").style("display", "none");
                 d3.selectAll(".byo_stage1").style("display", "block").style("opacity", "1");
                 d3.select("#byo0_red_circle").attr("class", "static").style("cursor", "default");
@@ -128,6 +99,9 @@
         create_button("byo1_0_buttons", "byo1_guess", "Submit", 425, 850, 150, 50);
         d3.select("#byo1_guess")
             .on("click", function(event, d) {
+                var r_t = get_translation_value("#byo1_red_circle");
+                var b_t = get_translation_value("#byo1_blue_circle");
+                d3.select("#byo_answer2").text(String(Math.round((calc_percentage_overlap(400+r_t, 190, 600+b_t, 190) * 100))) + "%");
                 d3.selectAll(".byo_stage2").style("display", "none");
                 d3.selectAll(".byo_stage3").style("display", "block").style("opacity", "1");
                 d3.select("#byo1_red_circle").attr("class", "static").style("cursor", "default");

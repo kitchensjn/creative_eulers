@@ -211,8 +211,8 @@
                     setTimeout(function() {
                         d3.selectAll(".ede_stage1,.ede_stage2,.ede_stage3,.ede_stage4").style("display", "none").style("opacity", "0");
                         d3.selectAll(".ede_stage0").style("display", "block").style("opacity", "1");
-                        d3.select("#cat_circle").attr("transform", null);
-                        d3.select("#dog_circle").attr("transform", null);
+                        d3.select("#cat_circle").attr("transform", "translate(400, 500)");
+                        d3.select("#dog_circle").attr("transform", "translate(600, 500)");
                         d3.select("#num_middle").attr("transform", null);
                         d3.select("#num_right").attr("transform", null);
                     }, 1000);
