@@ -9,7 +9,7 @@
         transition: 1s;
     }
 
-    #left_circle, #right_circle, #overlap {
+    #left_circle, #right_circle, #overlap0, #overlap1 {
         transition: 1s;
     }
 </style>
@@ -32,7 +32,8 @@
                 <g id="right_circle"></g>
             </g>
             <g class="numbers">
-                <text id="overlap" x="500" y="500" text-anchor="middle" dominant-baseline="central" font-size=1.5em>X%</text>
+                <text id="overlap0" class="i_stage0 i_stage1" x="500" y="500" text-anchor="middle" dominant-baseline="central" font-size=1.5em>X%</text>
+                <text id="overlap1" class="i_stage2 i_stage3" x="500" y="500" text-anchor="middle" dominant-baseline="central" font-size=1.5em transform="translate(-45, 0)">X%</text>
             </g>
             <g class="answers">
                 <g class="i_stage1">
@@ -86,35 +87,34 @@
         right_container.appendChild(right.children[0]);
 
         d3.selectAll(".i_stage0").style("display", "block");
-        d3.selectAll(".i_stage0").style("opacity", "1");
-        d3.select("#left_circle").attr("transform", "translate(400, 500)");
-        d3.select("#right_circle").attr("transform", "translate(600, 500)");
+        d3.selectAll(".i_stage0").transition().style("opacity", "1");
+        d3.select("#left_circle").transition().attr("transform", "translate(400, 500)");
+        d3.select("#right_circle").transition().attr("transform", "translate(600, 500)");
 
-        create_slider("example0");
-        create_slider("example1");
+        create_slider("example0", "overlap0");
+        create_slider("example1", "overlap1");
 
         create_button("example0_0_buttons", "example0_guess", "Submit", 425, 850, 150, 50);
         d3.select("#example0_guess")
             .on("click", function(event, d) {
                 d3.selectAll(".i_stage0").style("display", "none");
-                d3.selectAll(".i_stage1").style("display", "block").style("opacity", "1");
+                d3.selectAll(".i_stage1").style("display", "block").transition().style("opacity", "1");
             });
 
         create_button("example0_1_buttons", "example0_next", "Next", 450, 850, 100, 50);
         d3.select("#example0_next")
             .on("click", function(event, d) {
                 d3.selectAll(".i_stage1").style("display", "none");
-                d3.selectAll(".i_stage2").style("display", "block").style("opacity", "1");
-                d3.select("#overlap").attr("transform", "translate(-45, 0)").text("X%");
-                d3.select("#left_circle").attr("transform", "scale(0.87836632) translate(455.390866990437, 569.238583738047) translate(-48.731718219797, 0)");
-                d3.select("#right_circle").attr("transform", "scale(1.15005105) translate(521.71597078234, 434.763308985284) translate(12.8665592714341, 0)");
+                d3.selectAll(".i_stage2").style("display", "block").transition().style("opacity", "1");
+                d3.select("#left_circle").transition().attr("transform", "scale(0.87836632) translate(455.390866990437, 569.238583738047) translate(-48.731718219797, 0)");
+                d3.select("#right_circle").transition().attr("transform", "scale(1.15005105) translate(521.71597078234, 434.763308985284) translate(12.8665592714341, 0)");
             });
 
         create_button("example1_0_buttons", "example1_guess", "Submit", 425, 850, 150, 50);
         d3.select("#example1_guess")
             .on("click", function(event, d) {
                 d3.selectAll(".i_stage2").style("display", "none");
-                d3.selectAll(".i_stage3").style("display", "block").style("opacity", "1");
+                d3.selectAll(".i_stage3").style("display", "block").transition().style("opacity", "1");
             });
 
         create_button("example1_1_buttons", "example1_next", "Next", 450, 850, 100, 50);
@@ -125,18 +125,16 @@
                 
                 setTimeout(function() {
                     d3.selectAll(".i_stage0,.i_stage2,.i_stage3").style("display", "none").style("opacity", "0");
-                    d3.selectAll(".i_stage1").style("display", "block").style("opacity", "1");
-                    d3.select("#left_circle").attr("transform", "translate(400, 500)");
-                    d3.select("#right_circle").attr("transform", "translate(600, 500)");
-                    d3.select("#overlap").attr("transform", null);
+                    d3.selectAll(".i_stage1").style("display", "block").transition().style("opacity", "1");
+                    d3.select("#left_circle").transition().attr("transform", "translate(400, 500)");
+                    d3.select("#right_circle").transition().attr("transform", "translate(600, 500)");
                     
                     d3.select("#example0_next")
                         .on("click", function(event, d) {
                             d3.selectAll(".i_stage1").style("display", "none");
-                            d3.selectAll(".i_stage3").style("display", "block").style("opacity", "1");
-                            d3.select("#overlap").attr("transform", "translate(-45, 0)");
-                            d3.select("#left_circle").attr("transform", "scale(0.87836632) translate(455.390866990437, 569.238583738047) translate(-48.731718219797, 0)");
-                            d3.select("#right_circle").attr("transform", "scale(1.15005105) translate(521.71597078234, 434.763308985284) translate(12.8665592714341, 0)");
+                            d3.selectAll(".i_stage3").style("display", "block").transition().style("opacity", "1");
+                            d3.select("#left_circle").transition().attr("transform", "scale(0.87836632) translate(455.390866990437, 569.238583738047) translate(-48.731718219797, 0)");
+                            d3.select("#right_circle").transition().attr("transform", "scale(1.15005105) translate(521.71597078234, 434.763308985284) translate(12.8665592714341, 0)");
                         });
 
                 }, 1000);

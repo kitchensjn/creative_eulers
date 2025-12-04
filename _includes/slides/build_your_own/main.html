@@ -75,7 +75,7 @@
                 var b_t = get_translation_value("#byo0_blue_circle");
                 d3.select("#byo_answer1").text(String(Math.round((calc_percentage_overlap(400+r_t, 190, 600+b_t, 190) * 100))) + "%");
                 d3.selectAll(".byo_stage0").style("display", "none");
-                d3.selectAll(".byo_stage1").style("display", "block").style("opacity", "1");
+                d3.selectAll(".byo_stage1").style("display", "block").transition().style("opacity", "1");
                 d3.select("#byo0_red_circle").attr("class", "static").style("cursor", "default");
                 d3.select("#byo0_blue_circle").attr("class", "static").style("cursor", "default");
                 d3.selectAll(".static").call(
@@ -90,7 +90,7 @@
         d3.select("#byo0_next")
             .on("click", function(event, d) {
                 d3.selectAll(".byo_stage1").style("display", "none");
-                d3.selectAll(".byo_stage2").style("display", "block").style("opacity", "1");
+                d3.selectAll(".byo_stage2").style("display", "block").transition().style("opacity", "1");
             });
 
         create_interactive_circle("byo1_red_circle", 400, 500, 190, "rgba(255,0,0,0.2)");
@@ -103,7 +103,7 @@
                 var b_t = get_translation_value("#byo1_blue_circle");
                 d3.select("#byo_answer2").text(String(Math.round((calc_percentage_overlap(400+r_t, 190, 600+b_t, 190) * 100))) + "%");
                 d3.selectAll(".byo_stage2").style("display", "none");
-                d3.selectAll(".byo_stage3").style("display", "block").style("opacity", "1");
+                d3.selectAll(".byo_stage3").style("display", "block").transition().style("opacity", "1");
                 d3.select("#byo1_red_circle").attr("class", "static").style("cursor", "default");
                 d3.select("#byo1_blue_circle").attr("class", "static").style("cursor", "default");
                 d3.selectAll(".static").call(
@@ -121,12 +121,12 @@
                 
                 setTimeout(function() {
                     d3.selectAll(".byo_stage0,.byo_stage2,.byo_stage3").style("display", "none").style("opacity", "0");
-                    d3.selectAll(".byo_stage1").style("display", "block").style("opacity", "1");
+                    d3.selectAll(".byo_stage1").style("display", "block").transition().style("opacity", "1");
                     
                     d3.select("#byo0_next")
                         .on("click", function(event, d) {
                             d3.selectAll(".byo_stage1").style("display", "none");
-                            d3.selectAll(".byo_stage3").style("display", "block").style("opacity", "1");
+                            d3.selectAll(".byo_stage3").style("display", "block").transition().style("opacity", "1");
                         });
 
                 }, 1000);

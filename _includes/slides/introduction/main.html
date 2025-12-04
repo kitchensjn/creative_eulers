@@ -63,7 +63,7 @@
         d3.select("#intro_next")
             .on("click", function(event,d) {
                     d3.selectAll(".in_stage0").style("display", "none");
-                    d3.selectAll(".in_stage1").style("display", "block").style("opacity", "1");
+                    d3.selectAll(".in_stage1").style("display", "block").transition().style("opacity", "1");
                 });
 
         create_button("overview_buttons", "overview_next", "Next", 450, 850, 100, 50);
@@ -73,7 +73,7 @@
 
                     setTimeout(function() {
                         d3.selectAll(".in_stage1").style("display", "none").style("opacity", "0");
-                        d3.selectAll(".in_stage0").style("display", "block").style("opacity", "1");
+                        d3.selectAll(".in_stage0").style("display", "block").transition().style("opacity", "1");
                     }, 1000);
                 });
 

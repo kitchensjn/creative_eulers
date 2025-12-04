@@ -303,7 +303,7 @@
                     });
             }
 
-            function create_slider(id) {
+            function create_slider(id, target) {
                 var bar_container = document.getElementById(id+"_bar");
                 var rc = rough.svg(bar_container);
                 var bar = rc.rectangle(200, 750, 600, 50, {
@@ -337,7 +337,7 @@
                 function dragged(event, d) {
                     var cursor_pos = Math.min(Math.max(200, event.x), 800)
                     d3.select(this).attr("transform", "translate(" + String(cursor_pos-500) + ")");
-                    d3.select("#overlap").text(String(Math.round((cursor_pos-200)/(800-200)*100))+"%");
+                    d3.select("#"+target).text(String(Math.round((cursor_pos-200)/(800-200)*100))+"%");
                 }
 
                 function dragend(event, d) {
