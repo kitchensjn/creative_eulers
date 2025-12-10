@@ -33,14 +33,10 @@
             }
 
             .figure {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-                text-align: center;
-                height: 100vh;
-                width: 100vw;
-                position: relative;
+                opacity: 1;
+                transition: opacity 1s ease-in-out;
+                height: 100%;
+                width: 100%;
             }
 
             .full {
@@ -247,11 +243,13 @@
                 display: none;
             }
 
-
-
-
             .text-content {
                 font-size: 2em;
+                color: black;
+            }
+
+            .subtext-content {
+                font-size: 0.6em;
                 color: black;
             }
 
@@ -264,12 +262,20 @@
                 cursor: pointer;
             }
 
+            .likert_option:hover {
+                cursor: pointer;
+            }
+
 
         </style>
     </head>
     <body>
 
         <script>
+
+            d3.selection.prototype.first = function() {  return d3.select(this.nodes()[0]);  };
+
+            d3.selection.prototype.last = function() {   return d3.select(this.nodes()[this.size() - 1]); };
 
             function create_button(parent_id, id, text, x, y, w, h) {
                 var bc = d3.select("#"+parent_id).append("g").attr("id", id).attr("class", "button");
@@ -345,126 +351,61 @@
                 }
             }
 
-            function create_interactive_euler_diagram(id, where, data, dim, downscale, bottom_y, top_y, overlap_output, interactive) {
-                var shift_h = dim/2;
-                var shift_v = dim/2;
+            function create_5_option_likert(parent_id, trait_num, title, x, y, r) {
+                var colors = ["rgba(255,0,0,0.2)", "rgba(200,150,0,0.2)", "rgba(255,255,255,0.2)", "rgba(0,150,200,0.2)", "rgba(0,0,255,0.2)"];
+                var likert_container = document.getElementById(parent_id);
+                var id = "trait"+trait_num;
+                
+                d3.select("#"+parent_id).append("g").attr("id", id)
+                    .attr("class", "trait_likert");
 
-                var svg_container = d3.select("#"+where)
-                    .append("svg")
-                    .attr("id", id)
-                    .attr("width", "100%")
-                    .attr("height", "100%")
-                    .attr("viewBox", "0 0 " + dim + " " + dim);
+                d3.select("#"+id).append("text")
+                    .attr("x", "500")
+                    .attr("y", "350")
+                    .attr("text-anchor", "middle")
+                    .attr("dominant-baseline", "central")
+                    .attr("font-size", "1.5em")
+                    .text(title);
 
-                if (interactive) {
-                    svg_container
-                        .append("line")
-                        .attr("x1", 0)
-                        .attr("x2", 0)
-                        .attr("y1", bottom_y/downscale)
-                        .attr("y2", top_y/downscale)
-                        .attr("transform", "translate(" + shift_h + ", " + shift_v + ")")
-                        .attr("stroke", "lightgrey")
-                        .attr("stroke-width", 2);
-
-                    svg_container
-                        .append("circle")
-                        .attr("cx", 0)
-                        .attr("cy", bottom_y/downscale)
-                        .attr("r", 5)
-                        .attr("transform", "translate(" + shift_h + ", " + shift_v + ")")
-                        .attr("fill", "lightgrey");
+                for (let i = 0; i < 5; i++) {
+                    var option_id = id+"_option"+i;
+                    d3.select("#"+id).append("g")
+                        .attr("id", option_id)
+                        .attr("class", "likert_option")
+                        .on("mouseover", function(event, d) {
+                            d3.select(this).selectAll("path").first().style("fill", "black");
+                        })
+                        .on("mouseout", function(event, d) {
+                            d3.select(this).selectAll("path").first().style("fill", colors[i]);
+                        })
+                        .on("click", function(event, d) {
+                            if (trait_num < 17) {
+                                d3.select("#"+id).style("display", "none");
+                                var next_num = Number(trait_num) + 1;
+                                d3.select("#trait"+next_num).style("display", "block").transition().style("opacity", "1");
+                            } else {
+                                d3.selectAll(".gb_stage3").style("display", "none");
+                                d3.selectAll(".gb_stage0").style("display", "block").transition().style("opacity", "1");
+                            }
+                        });
                     
-                    svg_container
-                        .append("circle")
-                        .attr("cx", 0)
-                        .attr("cy", top_y/downscale)
-                        .attr("r", 5)
-                        .attr("transform", "translate(" + shift_h + ", " + shift_v + ")")
-                        .attr("fill", "lightgrey");
-                }
-
-                svg_container
-                    .selectAll("ellipses")
-                    .data(data)
-                    .enter()
-                    .append("path")
-                    .attr("stroke", function(d) { return d.color; })
-                    .attr("stroke-width", 15)
-                    .attr("stroke-dasharray", function(d) { return d.stroke_dasharray; })
-                    .attr("fill", "none")
-                    .attr("d", function(d) {
-                        return ["M", (d.h/downscale+d.a/downscale+shift_h), (d.k/downscale+shift_v), "A", d.a/downscale, d.b/downscale, 0, 1, 1, (d.h/downscale+d.a/downscale+shift_h), (d.k/downscale+shift_v-0.001)].join(' ')
-                    })
-                    .attr("transform", function(d) {
-                        return "rotate(" + d.phi*(180/Math.PI) + " " + (d.h/downscale+shift_h) + " " + (d.k/downscale+shift_h) + ")"; 
+                    var option_group = document.getElementById(id+"_option"+i);
+                    var rc = rough.svg(option_group);
+                    var circle = rc.circle(x+(-2+i)*(r*2+10), y, r*2, {
+                        fill: colors[i],
+                        fillStyle: "solid",
+                        strokeWidth: "3"
                     });
-            
-                if (interactive) {
-                    svg_container
-                        .selectAll("path")
-                            .on("mouseover", function(event, d) {
-                                d3.select(this)
-                                    .style("cursor", "grab")
-                                    .style("opacity", 1);
-                            })
-                            .on("mouseout", function(d) {
-                                d3.select("#"+id)
-                                    .selectAll("path")
-                                        .style("opacity", 1);
-                            })
-                            .call(d3.drag()
-                                .on("start", dragstart)
-                                .on("drag", dragging)
-                                .on("end", dragend));
-
-                    function dragstart(event, d) {
-                        d3.select("body").style("cursor", "grabbing");
-                        d3.select("#"+id)
-                            .selectAll("path")
-                                .style("pointer-events", "none")
-                                .style("opacity", 0.25);
-                        d3.select(this)
-                            .style("opacity", 1);
-                    }
-
-                    function dragging(event, d) {
-                        d3.select("#"+id)
-                            .selectAll("path")
-                                .style("pointer-events", "none")
-                                .style("opacity", 0.25);
-                        d3.select(this)
-                            .style("opacity", 1);
-                        d.k = d.k + event.dy*downscale;
-                        if (d.k < top_y) {
-                            d.k = top_y;
-                        } else if (d.k > bottom_y) {
-                            d.k = bottom_y;
-                        }
-                        d3.select(this)
-                            .attr("d", function(d) {
-                                return ["M", (d.h/downscale+d.a/downscale+shift_h), (d.k/downscale+shift_v), "A", d.a/downscale, d.b/downscale, 0, 1, 1, (d.h/downscale+d.a/downscale+shift_h), (d.k/downscale+shift_v-0.001)].join(' ')
-                            })
-                            .attr("transform", function(d) {
-                                return "rotate(" + d.phi*(180/Math.PI) + " " + (d.h/downscale+shift_h) + " " + (d.k/downscale+shift_v) + ")";
-                            });
-                    }
-
-                    function dragend(event, d) {
-                        d3.select("body").style("cursor", "initial");
-                        d3.select("#"+id)
-                            .selectAll("path")
-                                .style("pointer-events", "initial")
-                                .style("opacity", 1);
-                        var intersection = intersection_stats(data);
-                        d3.selectAll("input")
-                            .filter(function() {
-                                return d3.select(this).attr("name") == overlap_output;
-                            })
-                            .attr("value", intersection[intersection.length-1]);
-                        d3.select("#"+where).select(".percent").text(intersection[intersection.length-1] +"%");
-                    }
+                    option_group.appendChild(circle.children[0]);
+                    option_group.appendChild(circle.children[0]);
                 }
+
+                d3.select("#"+id).append("text")
+                    .attr("x", "500")
+                    .attr("y", "700")
+                    .attr("text-anchor", "middle")
+                    .attr("dominant-baseline", "central")
+                    .text(trait_num + " / 17");
             }
 
             function create_interactive_circle(id, x, y, r, c) {
@@ -542,6 +483,7 @@
                     {%- include slides/interpretability/main.html -%}
                     {%- include slides/build_your_own/main.html -%}
                     {%- include slides/genetics_background/main.html -%}
+                    {%- include slides/1KGP/main.html -%}
                 </div>
             </div>
         </form>

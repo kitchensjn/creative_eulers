@@ -12,7 +12,19 @@
         }
     }
 
-    .gb_stage1 {
+    .gb_stage1, .gb_stage2, .gb_stage3, .gb_stage4 {
+        display: none;
+        opacity: 0;
+        transition: 1s;
+    }
+
+    #hidden_marquee {
+        display: block;
+        opacity: 0;
+        transition: 1s;
+    }
+
+    .trait_likert {
         display: none;
         opacity: 0;
         transition: 1s;
@@ -20,10 +32,10 @@
 </style>
 
 <div id="genetics_background" class="carousel-item full grid-background">
-    <svg id="figure" viewBox="0 0 1000 1000">
+    <svg class="figure" viewBox="0 0 1000 1000">
         <g class="text-content">
             <g class="gb_stage0">
-                <text x="100" y="100">So how does this relate to genetics?</text>
+                <text x="100" y="100">So how does this relate to <tspan font-weight="bold">genetics</tspan>?</text>
                 <text x="100" y="200">Consider your genome as a very long sequence of</text>
                 <text x="100" y="250">"A"s, "C"s", "G"s, and "T"s. There are in fact</text>
                 <text x="100" y="300">approximately three billion of these letters lined</text>
@@ -35,25 +47,43 @@
                 <text x="100" y="150">that there are subtle differences. Where you have a</text>
                 <text x="100" y="200">“T”, they have a “C”. We describe positions in the</text>
                 <text x="100" y="250">genome where we see multiple possible letters as</text>
-                <text x="100" y="300"><tspan font-weight="700">“polymorphic”</tspan>, and if you look at enough genomes,</text>
+                <text x="100" y="300"><tspan font-weight="bold">“polymorphic”</tspan>, and if you look at enough genomes,</text>
                 <text x="100" y="350">you will see that nearly all positions in the genome</text>
                 <text x="100" y="400">are in fact polymorphic to some degree.</text>
+            </g>
+            <g class="gb_stage2">
+                <text x="100" y="100">Your DNA, the environment, and the interactions</text>
+                <text x="100" y="150">between these two factors control the development</text>
+                <text x="100" y="200">of your many traits. We want to know whether you</text>
+                <text x="100" y="250">think the following traits are</text>
+                <text x="100" y="300">environmentally-controlled, genetically-controlled, or</text>
+                <text x="100" y="350">somewhere in between.</text>
+            </g>
+            <g class="gb_stage3">
+                <text x="100" y="100">Please indicate to what extent you think the environment</text>
+                <text x="100" y="150">and genetic differences explain observed</text>
+                <text x="100" y="200">differences in the following trait.</text>
             </g>
         </g>
         <g class="diagram">
             <g class="gb_stage0 gb_stage1">
-                <text x="-500" y="600" font-size=2em class="marquee" letter-spacing="5">TCTCGTTCCCGCAGCTTGCCAGCACTTTCAGAATCATGGCGTGCATGGTAGAATGACTCTTATAACGGACTTCGACATGGCAATATCCCCCCCTTTCAACTTC<tspan fill="black">G</tspan>TAGAGGAGAAAAGTATTGACATGAGC<tspan fill="black">G</tspan>CTCCCGGCACAACGGCCAAAGAAGTCTCCAATTTCTTA<tspan fill="black">G</tspan>TTTCCGAATGACATGCGTCTCCTTGCGGGTAAATCGCCGACCGCAAAACTTAGGAGCCAGGGGGAACAGATAGGTCTA<tspan fill="black">G</tspan>ATTAGCTTAAGGGA<tspan fill="black">T</tspan>GTAAATCCTGGGATCGTTCAGTTGTAACCATATACTTACGCTGGGGCTTCTCCGGCGGATTTTTACTGTCACCAACCACGAGATTTGAAGTAAACCAATTGAGCACATAGCC</text>
+                <text x="-500" y="600" font-size=2em class="marquee" letter-spacing="5">TCTCGTTCCCGCAGCTTGCCAGCACTTTCAGAATCATGGCGTGCATGGTAGAATGACTCT<tspan fill="black">G</tspan>TATAACGGACTTCGACATGGCAATATCCCCCCCTTTCAACTTC<tspan fill="black">G</tspan>TAGAGGAGAAAAGTATTGACATGAGC<tspan fill="black">G</tspan>CTCCCGGCACAACGGCCAAAGAAGTCTCCAATTTCTTA<tspan fill="black">G</tspan>TTTCCGAATGACATGCGTCTCCTTGCGGGTAAATCGCCGACCGCAAAACTTAGGAGCCAGGGGGAACAGATAGGTCTA<tspan fill="black">G</tspan>ATTAGCTTAAGGGA<tspan fill="black">T</tspan>GTAAATCCTGGGATCGTTCAGTTGTAACCATATACTTACGCTGGGGCTTCTCCGGCGGATTTTTACTGTCACCAACCACGAGATTTGAAGTAAACCAATTGAGCACATAGCC</text>
             </g>
-            <g class="gb_stage1">
-                <text x="-500" y="550" font-size=2em class="marquee" letter-spacing="5">TCTCGTTCCCGCAGCTTGCCAGCACTTTCAGAATCATGGCGTGCATGGTAGAATGACTCTTATAACGGACTTCGACATGGCAATATCCCCCCCTTTCAACTTC<tspan fill="black">G</tspan>TAGAGGAGAAAAGTATTGACATGAGC<tspan fill="black">G</tspan>CTCCCGGCACAACGGCCAAAGAAGTCTCCAATTTCTTA<tspan fill="red"  >C</tspan>TTTCCGAATGACATGCGTCTCCTTGCGGGTAAATCGCCGACCGCAAAACTTAGGAGCCAGGGGGAACAGATAGGTCTA<tspan fill="black">G</tspan>ATTAGCTTAAGGGA<tspan fill="black">T</tspan>GTAAATCCTGGGATCGTTCAGTTGTAACCATATACTTACGCTGGGGCTTCTCCGGCGGATTTTTACTGTCACCAACCACGAGATTTGAAGTAAACCAATTGAGCACATAGCC</text>
-                <text x="-500" y="650" font-size=2em class="marquee" letter-spacing="5">TCTCGTTCCCGCAGCTTGCCAGCACTTTCAGAATCATGGCGTGCATGGTAGAATGACTCTTATAACGGACTTCGACATGGCAATATCCCCCCCTTTCAACTTC<tspan fill="black">G</tspan>TAGAGGAGAAAAGTATTGACATGAGC<tspan fill="red"  >T</tspan>CTCCCGGCACAACGGCCAAAGAAGTCTCCAATTTCTTA<tspan fill="red"  >C</tspan>TTTCCGAATGACATGCGTCTCCTTGCGGGTAAATCGCCGACCGCAAAACTTAGGAGCCAGGGGGAACAGATAGGTCTA<tspan fill="red"  >T</tspan>ATTAGCTTAAGGGA<tspan fill="black">T</tspan>GTAAATCCTGGGATCGTTCAGTTGTAACCATATACTTACGCTGGGGCTTCTCCGGCGGATTTTTACTGTCACCAACCACGAGATTTGAAGTAAACCAATTGAGCACATAGCC</text>
-                <text x="-500" y="700" font-size=2em class="marquee" letter-spacing="5">TCTCGTTCCCGCAGCTTGCCAGCACTTTCAGAATCATGGCGTGCATGGTAGAATGACTCTTATAACGGACTTCGACATGGCAATATCCCCCCCTTTCAACTTC<tspan fill="black">G</tspan>TAGAGGAGAAAAGTATTGACATGAGC<tspan fill="black">G</tspan>CTCCCGGCACAACGGCCAAAGAAGTCTCCAATTTCTTA<tspan fill="black">G</tspan>TTTCCGAATGACATGCGTCTCCTTGCGGGTAAATCGCCGACCGCAAAACTTAGGAGCCAGGGGGAACAGATAGGTCTA<tspan fill="red"  >T</tspan>ATTAGCTTAAGGGA<tspan fill="black">T</tspan>GTAAATCCTGGGATCGTTCAGTTGTAACCATATACTTACGCTGGGGCTTCTCCGGCGGATTTTTACTGTCACCAACCACGAGATTTGAAGTAAACCAATTGAGCACATAGCC</text>
-                <text x="-500" y="750" font-size=2em class="marquee" letter-spacing="5">TCTCGTTCCCGCAGCTTGCCAGCACTTTCAGAATCATGGCGTGCATGGTAGAATGACTCTTATAACGGACTTCGACATGGCAATATCCCCCCCTTTCAACTTC<tspan fill="red"  >C</tspan>TAGAGGAGAAAAGTATTGACATGAGC<tspan fill="black">G</tspan>CTCCCGGCACAACGGCCAAAGAAGTCTCCAATTTCTTA<tspan fill="black">G</tspan>TTTCCGAATGACATGCGTCTCCTTGCGGGTAAATCGCCGACCGCAAAACTTAGGAGCCAGGGGGAACAGATAGGTCTA<tspan fill="black">G</tspan>ATTAGCTTAAGGGA<tspan fill="red"  >G</tspan>GTAAATCCTGGGATCGTTCAGTTGTAACCATATACTTACGCTGGGGCTTCTCCGGCGGATTTTTACTGTCACCAACCACGAGATTTGAAGTAAACCAATTGAGCACATAGCC</text>
+            <g id="hidden_marquee" class="gb_stage1">
+                <text x="-500" y="550" font-size=2em class="marquee" letter-spacing="5">TCTCGTTCCCGCAGCTTGCCAGCACTTTCAGAATCATGGCGTGCATGGTAGAATGACTCT<tspan fill="red">A</tspan>TATAACGGACTTCGACATGGCAATATCCCCCCCTTTCAACTTC<tspan fill="black">G</tspan>TAGAGGAGAAAAGTATTGACATGAGC<tspan fill="black">G</tspan>CTCCCGGCACAACGGCCAAAGAAGTCTCCAATTTCTTA<tspan fill="red"  >C</tspan>TTTCCGAATGACATGCGTCTCCTTGCGGGTAAATCGCCGACCGCAAAACTTAGGAGCCAGGGGGAACAGATAGGTCTA<tspan fill="black">G</tspan>ATTAGCTTAAGGGA<tspan fill="black">T</tspan>GTAAATCCTGGGATCGTTCAGTTGTAACCATATACTTACGCTGGGGCTTCTCCGGCGGATTTTTACTGTCACCAACCACGAGATTTGAAGTAAACCAATTGAGCACATAGCC</text>
+                <text x="-500" y="650" font-size=2em class="marquee" letter-spacing="5">TCTCGTTCCCGCAGCTTGCCAGCACTTTCAGAATCATGGCGTGCATGGTAGAATGACTCT<tspan fill="black">G</tspan>TATAACGGACTTCGACATGGCAATATCCCCCCCTTTCAACTTC<tspan fill="black">G</tspan>TAGAGGAGAAAAGTATTGACATGAGC<tspan fill="red"  >T</tspan>CTCCCGGCACAACGGCCAAAGAAGTCTCCAATTTCTTA<tspan fill="red"  >C</tspan>TTTCCGAATGACATGCGTCTCCTTGCGGGTAAATCGCCGACCGCAAAACTTAGGAGCCAGGGGGAACAGATAGGTCTA<tspan fill="red"  >T</tspan>ATTAGCTTAAGGGA<tspan fill="black">T</tspan>GTAAATCCTGGGATCGTTCAGTTGTAACCATATACTTACGCTGGGGCTTCTCCGGCGGATTTTTACTGTCACCAACCACGAGATTTGAAGTAAACCAATTGAGCACATAGCC</text>
+                <text x="-500" y="700" font-size=2em class="marquee" letter-spacing="5">TCTCGTTCCCGCAGCTTGCCAGCACTTTCAGAATCATGGCGTGCATGGTAGAATGACTCT<tspan fill="black">G</tspan>TATAACGGACTTCGACATGGCAATATCCCCCCCTTTCAACTTC<tspan fill="black">G</tspan>TAGAGGAGAAAAGTATTGACATGAGC<tspan fill="black">G</tspan>CTCCCGGCACAACGGCCAAAGAAGTCTCCAATTTCTTA<tspan fill="black">G</tspan>TTTCCGAATGACATGCGTCTCCTTGCGGGTAAATCGCCGACCGCAAAACTTAGGAGCCAGGGGGAACAGATAGGTCTA<tspan fill="red"  >T</tspan>ATTAGCTTAAGGGA<tspan fill="black">T</tspan>GTAAATCCTGGGATCGTTCAGTTGTAACCATATACTTACGCTGGGGCTTCTCCGGCGGATTTTTACTGTCACCAACCACGAGATTTGAAGTAAACCAATTGAGCACATAGCC</text>
+                <text x="-500" y="750" font-size=2em class="marquee" letter-spacing="5">TCTCGTTCCCGCAGCTTGCCAGCACTTTCAGAATCATGGCGTGCATGGTAGAATGACTCT<tspan fill="black">G</tspan>TATAACGGACTTCGACATGGCAATATCCCCCCCTTTCAACTTC<tspan fill="red"  >C</tspan>TAGAGGAGAAAAGTATTGACATGAGC<tspan fill="black">G</tspan>CTCCCGGCACAACGGCCAAAGAAGTCTCCAATTTCTTA<tspan fill="black">G</tspan>TTTCCGAATGACATGCGTCTCCTTGCGGGTAAATCGCCGACCGCAAAACTTAGGAGCCAGGGGGAACAGATAGGTCTA<tspan fill="black">G</tspan>ATTAGCTTAAGGGA<tspan fill="red"  >G</tspan>GTAAATCCTGGGATCGTTCAGTTGTAACCATATACTTACGCTGGGGCTTCTCCGGCGGATTTTTACTGTCACCAACCACGAGATTTGAAGTAAACCAATTGAGCACATAGCC</text>
             </g>
+            <g class="gb_stage2 gb_stage3">
+                <g id="spectrum"></g>
+            </g>
+            <g id="likert" class="gb_stage3"></g>
         </g>
         <g class="buttons">
             <g id="gb0_buttons" class="gb_stage0"></g>
             <g id="gb1_buttons" class="gb_stage1"></g>
+            <g id="gb2_buttons" class="gb_stage2"></g>
         </g>
     </svg>
 
@@ -63,10 +93,69 @@
 
         create_button("gb0_buttons", "gb0_next", "Next", 450, 850, 100, 50);
         create_button("gb1_buttons", "gb1_next", "Next", 450, 850, 100, 50);
+        create_button("gb2_buttons", "gb2_next", "Next", 450, 850, 100, 50);
+
+        d3.select("#spectrum").append("text")
+            .attr("x", "50")
+            .attr("y", "500")
+            .attr("text-anchor", "start")
+            .attr("dominant-baseline", "central")
+            .text("Only Environment");
+
+        d3.select("#spectrum").append("text")
+            .attr("x", "320")
+            .attr("y", "500")
+            .attr("text-anchor", "start")
+            .attr("dominant-baseline", "central")
+            .text("<------------------------->");
+        
+        d3.select("#spectrum").append("text")
+            .attr("x", "950")
+            .attr("y", "500")
+            .attr("text-anchor", "end")
+            .attr("dominant-baseline", "central")
+            .text("Only Genetics");
+
+        create_5_option_likert("likert", "1", "HEIGHT", 500, 500, 75);
+        create_5_option_likert("likert", "2", "BIPOLAR DISORDER", 500, 500, 75);
+        create_5_option_likert("likert", "3", "DIABETES", 500, 500, 75);
+        create_5_option_likert("likert", "4", "COLOR BLINDNESS", 500, 500, 75);
+        create_5_option_likert("likert", "5", "SCHIZOPHRENIA", 500, 500, 75);
+        create_5_option_likert("likert", "6", "ALCOHOLISM", 500, 500, 75);
+        create_5_option_likert("likert", "7", "BREAST CANCER", 500, 500, 75);
+        create_5_option_likert("likert", "8", "INTEREST IN FASHION", 500, 500, 75);
+        create_5_option_likert("likert", "9", "ADDICTION TO GAMBLING", 500, 500, 75);
+        create_5_option_likert("likert", "10", "POLITICAL BELIEFS", 500, 500, 75);
+        create_5_option_likert("likert", "11", "INTELLIGENCE IN ADULTS", 500, 500, 75);
+        create_5_option_likert("likert", "12", "SEVERE DEPRESSION", 500, 500, 75);
+        create_5_option_likert("likert", "13", "ATTENTION DEFICIT HYPERACTIVITY DISORDER", 500, 500, 75);
+        create_5_option_likert("likert", "14", "ASTHMA", 500, 500, 75);
+        create_5_option_likert("likert", "15", "VIOLENT BEHAVIOR", 500, 500, 75);
+        create_5_option_likert("likert", "16", "RELIGIOUS BELIEFS", 500, 500, 75);
+        create_5_option_likert("likert", "17", "BLOOD GROUP (ABO)", 500, 500, 75);
+        
         d3.select("#gb0_next")
             .on("click", function(event, d) {
                 d3.selectAll(".gb_stage0").style("display", "none");
                 d3.selectAll(".gb_stage1").style("display", "block").transition().style("opacity", "1");
             });
+        
+        d3.select("#gb1_next")
+            .on("click", function(event, d) {
+                d3.selectAll(".gb_stage1").style("display", "none");
+                d3.selectAll(".gb_stage2").style("display", "block").transition().style("opacity", "1");
+            })
+
+        d3.select("#gb2_next")
+            .on("click", function(event, d) {
+                d3.selectAll(".gb_stage2").style("display", "none");
+                d3.selectAll(".gb_stage3").style("display", "block").transition().style("opacity", "1");
+                d3.select("#trait1").style("display", "block").transition().style("opacity", "1");
+                d3.selectAll("#spectrum>text").transition().attr("y", "625");
+            })
+        
+        
+
+        
     </script>
 </div>
