@@ -119,6 +119,9 @@
         </g>
     </svg>
     <script>
+
+        d3.selectAll(".ede_stage0").style("display", "block");
+
         var table_container = document.getElementById("table_lines");
         var rc = rough.svg(table_container);
         
@@ -140,28 +143,10 @@
         });
         table_container.appendChild(vertical.children[0]);
 
-        var cat_container = document.getElementById("cat_circle");
-        var rc = rough.svg(cat_container);
-        var cat = rc.circle(0, 0, 190*2, {
-            fill: "rgba(255,0,0,0.2)",
-            fillStyle: "solid",
-            strokeWidth: "3"
-        });
-        cat_container.appendChild(cat.children[0]);
-        cat_container.appendChild(cat.children[0]);
-
-        var dog_container = document.getElementById("dog_circle");
-        var rc = rough.svg(dog_container);
-        var dog = rc.circle(0, 0, 190*2, {
-            fill: "rgba(0,0,255,0.2)",
-            fillStyle: "solid",
-            strokeWidth: "3"
-        });
-        dog_container.appendChild(dog.children[0]);
-        dog_container.appendChild(dog.children[0]);
-
-        d3.selectAll(".ede_stage0").style("display", "block");
+        
+        create_circle("cat_circle", 0, 0, 190, "rgba(255,0,0,0.2)");
         d3.select("#cat_circle").attr("transform", "translate(400, 500)");
+        create_circle("dog_circle", 0, 0, 190, "rgba(0,0,255,0.2)");
         d3.select("#dog_circle").attr("transform", "translate(600, 500)");
 
         create_button("table_buttons", "table_next", "Next", 450, 850, 100, 50);
