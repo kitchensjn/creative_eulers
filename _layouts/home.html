@@ -453,7 +453,19 @@
                 
             }
             
-            function create_interactive_circle(id, x, y, r, c=false, s=3) {
+            function create_interactive_circle(
+                id,
+                x,
+                y,
+                r,
+                c=false,
+                s=3,
+                p_id=false,
+                p_x=false,
+                p_r=false,
+                target=false
+            ) {
+                
                 create_circle(id, x, y, r, c, s);
 
                 d3.select("#"+id).call(
@@ -470,6 +482,11 @@
                 function dragged(event, d) {
                     var cursor_pos = Math.min(Math.max(200, event.x), 800)
                     d3.select(this).attr("transform", "translate(" + String(cursor_pos-x) + ")");
+                    if (p_id != false) {
+                        var t = get_translation_value("#"+id);
+                        var p_t = get_translation_value("#"+p_id);
+                        d3.select("#"+target).text(String(Math.round((calc_percentage_overlap(x+t, r, p_x+p_t, p_r) * 100))) + "%");
+                    }
                 }
 
                 function dragend(event, d) {
@@ -479,9 +496,20 @@
 
             function calc_area_of_two_circle_intersection(x, r, X, R) {
                 var d = Math.abs(x-X);
-                var term1 = (r**2)*Math.acos(((d**2)+(r**2)-(R**2))/(2*d*r))
-                var term2 = (R**2)*Math.acos(((d**2)+(R**2)-(r**2))/(2*d*R))
-                var term3 = (1/2)*Math.sqrt((-d+r+R)*(d+r-R)*(d-r+R)*(d+r+R))
+                var rad_sum = r+R;
+                var rad_diff = r-R;
+                if (d >= rad_sum) {
+                    return 0
+                }
+                if (d <= Math.abs(rad_diff)) {
+                    if (rad_diff < 0) {
+                        return Math.PI*(r**2)
+                    }
+                    return Math.PI*(R**2)
+                }
+                var term1 = (r**2)*Math.acos(((d**2)+(r**2)-(R**2))/(2*d*r));
+                var term2 = (R**2)*Math.acos(((d**2)+(R**2)-(r**2))/(2*d*R));
+                var term3 = (1/2)*Math.sqrt((-d+r+R)*(d+r-R)*(d-r+R)*(d+r+R));
                 return term1+term2-term3
             }
 

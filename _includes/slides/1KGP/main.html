@@ -1,5 +1,5 @@
 <style>
-    .kg_stage1, .kg_stage2, .kg_stage3, .kg_stage4, .kg_stage5, .kg_stage6 {
+    .kg_stage1, .kg_stage2, .kg_stage3, .kg_stage4, .kg_stage5, .kg_stage6, .kg_stage7 {
         display: none;
         opacity: 0;
         transition: 1s;
@@ -37,6 +37,11 @@
                 <text x="100" y="100"><tspan font-weight="bold">Slide the circles to estimate the amount of overlap</tspan></text>
                 <text x="100" y="150"><tspan font-weight="bold">in common genetic variation between the specified</tspan></text>
                 <text x="100" y="200"><tspan font-weight="bold">subgroups.</tspan> The starting position is random.</text>
+            </g>
+            <g class="kg_stage7">
+                <text x="100" y="100"><tspan font-weight="bold">Compare your guesses to the observed amount</tspan></text>
+                <text x="100" y="150"><tspan font-weight="bold">of overlap in common genetic variation between</tspan></text>
+                <text x="100" y="200"><tspan font-weight="bold">the subgroups in the 1000 Genomes Project.</tspan></text>
             </g>
         </g>
         <g class="diagram">
@@ -88,16 +93,40 @@
                 <g id="MXL_circle"></g>
             </g>
             <g class="kg_stage4">
-                <g id="ACB_CEU_ACB"></g>
-                <g id="ACB_CEU_CEU"></g>
+                <g id="ACB_CEU_ACB" class="interactive_circle"></g>
+                <g id="ACB_CEU_CEU" class="interactive_circle"></g>
             </g>
             <g class="kg_stage5">
-                <g id="ACB_MXL_ACB"></g>
-                <g id="ACB_MXL_MXL"></g>
+                <g id="ACB_MXL_ACB" class="interactive_circle"></g>
+                <g id="ACB_MXL_MXL" class="interactive_circle"></g>
             </g>
             <g class="kg_stage6">
-                <g id="CEU_MXL_CEU"></g>
-                <g id="CEU_MXL_MXL"></g>
+                <g id="CEU_MXL_CEU" class="interactive_circle"></g>
+                <g id="CEU_MXL_MXL" class="interactive_circle"></g>
+            </g>
+            <g class="kg_stage7">
+                <text x="200" y="300" text-anchor="middle" dominant-baseline="central">Your Guess</text>
+                <text x="800" y="285" text-anchor="middle" dominant-baseline="central">1000 Genomes</text>
+                <text x="800" y="315" text-anchor="middle" dominant-baseline="central">Project</text>
+                <text x="200" y="410" font-size=1.5em text-anchor="middle" dominant-baseline="central" id="kg_answer1_table">X%</text>
+                <text x="500" y="385" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="red">African Caribbean in Barbados</text>
+                <text x="500" y="410" font-size=0.7em text-anchor="middle" dominant-baseline="central">-</text>
+                <text x="500" y="435" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="green">Utah residents (CEPH) with Northern</text>
+                <text x="500" y="460" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="green">and Western European ancestry</text>
+                <text x="800" y="410" font-size=1.5em text-anchor="middle" dominant-baseline="central">51%</text>
+                <text x="200" y="560" font-size=1.5em text-anchor="middle" dominant-baseline="central" id="kg_answer2_table">X%</text>
+                <text x="500" y="535" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="red">African Caribbean in Barbados</text>
+                <text x="500" y="560" font-size=0.7em text-anchor="middle" dominant-baseline="central">-</text>
+                <text x="500" y="585" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="blue">Mexican Ancestry in Los Angeles,</text>
+                <text x="500" y="610" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="blue">California</text>
+                <text x="800" y="560" font-size=1.5em text-anchor="middle" dominant-baseline="central">52%</text>
+                <text x="200" y="710" font-size=1.5em text-anchor="middle" dominant-baseline="central" id="kg_answer3_table">X%</text>
+                <text x="500" y="660" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="green">Utah residents (CEPH) with Northern</text>
+                <text x="500" y="685" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="green">and Western European ancestry</text>
+                <text x="500" y="710" font-size=0.7em text-anchor="middle" dominant-baseline="central">-</text>
+                <text x="500" y="735" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="blue">Mexican Ancestry in Los Angeles,</text>
+                <text x="500" y="760" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="blue">California</text>
+                <text x="800" y="710" font-size=1.5em text-anchor="middle" dominant-baseline="central">78%</text>
             </g>
             <g class="annotations">
                 <g class="kg_stage1 kg_stage2">
@@ -126,13 +155,13 @@
             </g>
             <g class="answers">
                 <g class="kg_stage4">
-                    <text x="500" y="775" text-anchor="middle" dominant-baseline="central">Your diagram shows a <tspan id="byo_answer1" font-weight="bold" dominant-baseline="central">X%</tspan> overlap.</text>
+                    <text x="500" y="775" text-anchor="middle" dominant-baseline="central">Your diagram shows a <tspan id="kg_answer1" font-weight="bold" dominant-baseline="central">X%</tspan> overlap.</text>
                 </g>
                 <g class="kg_stage5">
-                    <text x="500" y="775" text-anchor="middle" dominant-baseline="central">Your diagram shows a <tspan id="byo_answer2" font-weight="bold" dominant-baseline="central">X%</tspan> overlap.</text>
+                    <text x="500" y="775" text-anchor="middle" dominant-baseline="central">Your diagram shows a <tspan id="kg_answer2" font-weight="bold" dominant-baseline="central">X%</tspan> overlap.</text>
                 </g>
                 <g class="kg_stage6">
-                    <text x="500" y="775" text-anchor="middle" dominant-baseline="central">Your diagram shows a <tspan id="byo_answer2" font-weight="bold" dominant-baseline="central">X%</tspan> overlap.</text>
+                    <text x="500" y="775" text-anchor="middle" dominant-baseline="central">Your diagram shows a <tspan id="kg_answer3" font-weight="bold" dominant-baseline="central">X%</tspan> overlap.</text>
                 </g>
             </g>
         </g>
@@ -143,6 +172,8 @@
             <g id="kg3_buttons" class="kg_stage3"></g>
             <g id="kg4_buttons" class="kg_stage4"></g>
             <g id="kg5_buttons" class="kg_stage5"></g>
+            <g id="kg6_buttons" class="kg_stage6"></g>
+            <g id="kg7_buttons" class="kg_stage7"></g>
         </g>
     </svg>
 
@@ -156,26 +187,98 @@
         
         create_circle("common_circle", 400, 555, 27.4473/2, "rgba(0,0,255,0.2)");
 
-        create_circle("ACB_circle", 400, 500, 213.02/2, "rgba(255,0,0,0.2)");
-        create_circle("CEU_circle", 600, 550, 180/2, "rgba(0,255,0,0.2)");
-        create_circle("MXL_circle", 470, 690, 179.02/2, "rgba(0,0,255,0.2)");
 
+        var ACB_radius = 213.02/2;
+        var CEU_radius = 180/2;
+        var MXL_radius = 179.02/2;
 
-        create_interactive_circle("ACB_CEU_ACB", random_between(400, 600), 550, 213.02/2, "rgba(255,0,0,0.2)");
-        create_interactive_circle("ACB_CEU_CEU", random_between(400, 600), 550, 180/2, "rgba(0,255,0,0.2)");
+        create_circle("ACB_circle", 400, 500, ACB_radius, "rgba(255,0,0,0.2)");
+        create_circle("CEU_circle", 600, 550, CEU_radius, "rgba(0,255,0,0.2)");
+        create_circle("MXL_circle", 470, 690, MXL_radius, "rgba(0,0,255,0.2)");
 
-        create_interactive_circle("ACB_MXL_ACB", random_between(400, 600), 550, 213.02/2, "rgba(255,0,0,0.2)");
-        create_interactive_circle("ACB_MXL_MXL", random_between(400, 600), 550, 179.02/2, "rgba(0,0,255,0.2)");
+        create_interactive_circle(
+            "ACB_CEU_ACB",
+            500,
+            550,
+            ACB_radius,
+            "rgba(255,0,0,0.2)",
+            3,
+            "ACB_CEU_CEU",
+            550,
+            CEU_radius,
+            "kg_answer1"
+        );
+        create_interactive_circle(
+            "ACB_CEU_CEU",
+            550,
+            550,
+            CEU_radius,
+            "rgba(0,255,0,0.2)",
+            3,
+            "ACB_CEU_ACB",
+            500,
+            ACB_radius,
+            "kg_answer1"
+        );
 
-        create_interactive_circle("CEU_MXL_CEU", random_between(400, 600), 550, 180/2, "rgba(0,255,0,0.2)");
-        create_interactive_circle("CEU_MXL_MXL", random_between(400, 600), 550, 179.02/2, "rgba(0,0,255,0.2)");
+        create_interactive_circle(
+            "ACB_MXL_ACB",
+            500,
+            550,
+            ACB_radius,
+            "rgba(255,0,0,0.2)",
+            3,
+            "ACB_MXL_MXL",
+            550,
+            MXL_radius,
+            "kg_answer2"
+        );
+        create_interactive_circle(
+            "ACB_MXL_MXL",
+            550,
+            550,
+            MXL_radius,
+            "rgba(0,0,255,0.2)",
+            3,
+            "ACB_MXL_ACB",
+            500,
+            ACB_radius,
+            "kg_answer2"
+        );
+
+        create_interactive_circle(
+            "CEU_MXL_CEU",
+            500,
+            550,
+            CEU_radius,
+            "rgba(0,255,0,0.2)",
+            3,
+            "CEU_MXL_MXL",
+            550,
+            MXL_radius,
+            "kg_answer3"
+        );
+        create_interactive_circle(
+            "CEU_MXL_MXL",
+            550,
+            550,
+            MXL_radius,
+            "rgba(0,0,255,0.2)",
+            3,
+            "CEU_MXL_CEU",
+            500,
+            CEU_radius,
+            "kg_answer3"
+        );
 
         create_button("kg0_buttons", "kg0_next", "Next", 450, 850, 100, 50);
         create_button("kg1_buttons", "kg1_next", "Next", 450, 850, 100, 50);
         create_button("kg2_buttons", "kg2_next", "Next", 450, 850, 100, 50);
         create_button("kg3_buttons", "kg3_next", "Next", 450, 850, 100, 50);
-        create_button("kg4_buttons", "kg4_next", "Submit", 425, 850, 150, 50);
-        create_button("kg5_buttons", "kg5_next", "Submit", 425, 850, 150, 50);
+        create_button("kg4_buttons", "kg4_submit", "Submit", 425, 850, 150, 50);
+        create_button("kg5_buttons", "kg5_submit", "Submit", 425, 850, 150, 50);
+        create_button("kg6_buttons", "kg6_submit", "Submit", 425, 850, 150, 50);
+        create_button("kg7_buttons", "kg7_next", "Next", 450, 850, 100, 50);
 
         d3.select("#kg0_next")
             .on("click", function(event, d) {
@@ -209,16 +312,25 @@
                 d3.selectAll(".kg_stage4").style("display", "block").transition().style("opacity", "1");
             });
 
-        d3.select("#kg4_next")
+        d3.select("#kg4_submit")
             .on("click", function(event, d) {
                 d3.selectAll(".kg_stage4").style("display", "none");
                 d3.selectAll(".kg_stage5").style("display", "block").transition().style("opacity", "1");
+                d3.select("#kg_answer1_table").text(d3.select("#kg_answer1").text());
             });
         
-        d3.select("#kg5_next")
+        d3.select("#kg5_submit")
             .on("click", function(event, d) {
                 d3.selectAll(".kg_stage5").style("display", "none");
                 d3.selectAll(".kg_stage6").style("display", "block").transition().style("opacity", "1");
+                d3.select("#kg_answer2_table").text(d3.select("#kg_answer2").text());
+            });
+
+        d3.select("#kg6_submit")
+            .on("click", function(event, d) {
+                d3.selectAll(".kg_stage6").style("display", "none");
+                d3.selectAll(".kg_stage7").style("display", "block").transition().style("opacity", "1");
+                d3.select("#kg_answer3_table").text(d3.select("#kg_answer3").text());
             });
         
     </script>
