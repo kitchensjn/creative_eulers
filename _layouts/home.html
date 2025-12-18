@@ -369,14 +369,16 @@
 
                 for (let i = 0; i < 5; i++) {
                     var option_id = id+"_option"+i;
-                    d3.select("#"+id).append("g")
+                    var symbol = d3.select("#"+id).append("g")
                         .attr("id", option_id)
                         .attr("class", "likert_option")
                         .on("mouseover", function(event, d) {
                             d3.select(this).selectAll("path").first().style("fill", "black");
+                            d3.select(this).selectAll("text").attr("fill", "white");
                         })
                         .on("mouseout", function(event, d) {
                             d3.select(this).selectAll("path").first().style("fill", colors[i]);
+                            d3.select(this).selectAll("text").attr("fill", "black");
                         })
                         .on("click", function(event, d) {
                             if (trait_num < 17) {
@@ -404,6 +406,23 @@
                     });
                     option_group.appendChild(circle.children[0]);
                     option_group.appendChild(circle.children[0]);
+
+                    symbol.append("text")
+                        .attr("x", x+(-2+i)*(r*2+10))
+                        .attr("y", y)
+                        .attr("text-anchor", "middle")
+                        .attr("dominant-baseline", "central")
+                        .text(i+1);
+
+                    if (i == 2) {
+                        symbol.append("text")
+                            .attr("x", x+(-2+i)*(r*2+10))
+                            .attr("y", y+30)
+                            .attr("font-size", "0.7em")
+                            .attr("text-anchor", "middle")
+                            .attr("dominant-baseline", "central")
+                            .text("50/50");
+                    }
                 }
 
                 d3.select("#"+id).append("text")
@@ -481,6 +500,10 @@
                     t = parseFloat(translate_string.replace("translate(", "").replace(")", ""));
                 }
                 return t
+            }
+
+            function random_between(min, max) {
+                return Math.random() * (max - min) + min
             }
 
         </script>
