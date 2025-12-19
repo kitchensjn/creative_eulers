@@ -12,6 +12,12 @@
     #left_circle, #right_circle, #overlap0, #overlap1 {
         transition: 1s;
     }
+
+    #example0_guess, #example1_guess {
+        display: none;
+        opacity: 0;
+        transition: 1s;
+    }
 </style>
 
 <div id="interpretability" class="carousel-item full grid-background">
@@ -26,7 +32,7 @@
             </g>
         </g>
 
-        <g class="diagram">
+        <g class="diagram" transform="translate(0, 25)">
             <g>
                 <g id="left_circle"></g>
                 <g id="right_circle"></g>
@@ -37,10 +43,10 @@
             </g>
             <g class="answers">
                 <g class="i_stage1">
-                    <text x="500" y="775" text-anchor="middle" dominant-baseline="central">The correct overlap is <tspan font-weight="bold" dominant-baseline="central">22%</tspan>.</text>
+                    <text x="500" y="800" text-anchor="middle" dominant-baseline="central">The correct overlap is <tspan font-weight="bold" dominant-baseline="central">22%</tspan>.</text>
                 </g>
                 <g class="i_stage3">
-                    <text x="500" y="775" text-anchor="middle" dominant-baseline="central">The correct overlap is <tspan font-weight="bold" dominant-baseline="central">12%</tspan>.</text>
+                    <text x="500" y="800" text-anchor="middle" dominant-baseline="central">The correct overlap is <tspan font-weight="bold" dominant-baseline="central">12%</tspan>.</text>
                 </g>
             </g>
             <g class="slider">
@@ -91,8 +97,8 @@
         d3.select("#left_circle").transition().attr("transform", "translate(400, 500)");
         d3.select("#right_circle").transition().attr("transform", "translate(600, 500)");
 
-        create_slider("example0", "overlap0");
-        create_slider("example1", "overlap1");
+        create_slider("example0", "overlap0", "example0_guess");
+        create_slider("example1", "overlap1", "example1_guess");
 
         create_button("example0_0_buttons", "example0_guess", "Submit", 425, 900, 150, 50);
         d3.select("#example0_guess")

@@ -4,6 +4,12 @@
         opacity: 0;
         transition: 1s;
     }
+
+    #kg4_submit, #kg5_submit, #kg6_submit {
+        display: none;
+        opacity: 0;
+        transition: 1s;
+    }
 </style>
 
 <div id="thousand_genomes" class="carousel-item full grid-background">
@@ -45,38 +51,38 @@
                 <text x="100" y="200"><tspan font-weight="bold">the subgroups in the 1000 Genomes Project.</tspan></text>
             </g>
         </g>
-        <g class="diagram">
+        <g class="diagram" transform="translate(0, 50)">
             <g class="subgroups">
                 <g class="kg_stage4">
                     <g>
-                        <text x="300" y="300" text-anchor="middle" dominant-baseline="central" font-size=0.7em fill="red">African Caribbean in</text>
-                        <text x="300" y="325" text-anchor="middle" dominant-baseline="central" font-size=0.7em fill="red">Barbados</text>
+                        <text x="300" y="300" text-anchor="middle" dominant-baseline="central" fill="red">African Caribbean in</text>
+                        <text x="300" y="325" text-anchor="middle" dominant-baseline="central" fill="red">Barbados</text>
                     </g>
                     <g>
-                        <text x="700" y="300" text-anchor="middle" dominant-baseline="central" font-size=0.7em fill="green">Utah residents (CEPH) with</text>
-                        <text x="700" y="325" text-anchor="middle" dominant-baseline="central" font-size=0.7em fill="green">Northern and Western</text>
-                        <text x="700" y="350" text-anchor="middle" dominant-baseline="central" font-size=0.7em fill="green">European ancestry</text>
+                        <text x="700" y="300" text-anchor="middle" dominant-baseline="central" fill="green">Utah residents (CEPH) with</text>
+                        <text x="700" y="325" text-anchor="middle" dominant-baseline="central" fill="green">Northern and Western</text>
+                        <text x="700" y="350" text-anchor="middle" dominant-baseline="central" fill="green">European ancestry</text>
                     </g>
                 </g>
                 <g class="kg_stage5">
                     <g>
-                        <text x="300" y="300" text-anchor="middle" dominant-baseline="central" font-size=0.7em fill="red">African Caribbean in</text>
-                        <text x="300" y="325" text-anchor="middle" dominant-baseline="central" font-size=0.7em fill="red">Barbados</text>
+                        <text x="300" y="300" text-anchor="middle" dominant-baseline="central" fill="red">African Caribbean in</text>
+                        <text x="300" y="325" text-anchor="middle" dominant-baseline="central" fill="red">Barbados</text>
                     </g>
                     <g>
-                        <text x="700" y="300" text-anchor="middle" dominant-baseline="central" font-size=0.7em fill="blue">Mexican Ancestry in</text>
-                        <text x="700" y="325" text-anchor="middle" dominant-baseline="central" font-size=0.7em fill="blue">Los Angeles, California</text>
+                        <text x="700" y="300" text-anchor="middle" dominant-baseline="central" fill="blue">Mexican Ancestry in</text>
+                        <text x="700" y="325" text-anchor="middle" dominant-baseline="central" fill="blue">Los Angeles, California</text>
                     </g>
                 </g>
                 <g class="kg_stage6">
                     <g>
-                        <text x="300" y="300" text-anchor="middle" dominant-baseline="central" font-size=0.7em fill="green">Utah residents (CEPH) with</text>
-                        <text x="300" y="325" text-anchor="middle" dominant-baseline="central" font-size=0.7em fill="green">Northern and Western</text>
-                        <text x="300" y="350" text-anchor="middle" dominant-baseline="central" font-size=0.7em fill="green">European ancestry</text>
+                        <text x="300" y="300" text-anchor="middle" dominant-baseline="central" fill="green">Utah residents (CEPH) with</text>
+                        <text x="300" y="325" text-anchor="middle" dominant-baseline="central" fill="green">Northern and Western</text>
+                        <text x="300" y="350" text-anchor="middle" dominant-baseline="central" fill="green">European ancestry</text>
                     </g>
                     <g>
-                        <text x="700" y="300" text-anchor="middle" dominant-baseline="central" font-size=0.7em fill="blue">Mexican Ancestry in</text>
-                        <text x="700" y="325" text-anchor="middle" dominant-baseline="central" font-size=0.7em fill="blue">Los Angeles, California</text>
+                        <text x="700" y="300" text-anchor="middle" dominant-baseline="central" fill="blue">Mexican Ancestry in</text>
+                        <text x="700" y="325" text-anchor="middle" dominant-baseline="central" fill="blue">Los Angeles, California</text>
                     </g>
                 </g>
             </g>
@@ -106,21 +112,24 @@
                 <g id="CEU_MXL_MXL" class="interactive_circle"></g>
             </g>
             <g class="kg_stage7">
-                <text x="200" y="300" text-anchor="middle" dominant-baseline="central">Your Guess</text>
-                <text x="800" y="285" text-anchor="middle" dominant-baseline="central">1000 Genomes</text>
-                <text x="800" y="315" text-anchor="middle" dominant-baseline="central">Project</text>
-                <text x="200" y="410" font-size=1.5em text-anchor="middle" dominant-baseline="central" id="kg_answer1_table">X%</text>
-                <text x="500" y="385" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="red">African Caribbean in Barbados</text>
-                <text x="500" y="410" font-size=0.7em text-anchor="middle" dominant-baseline="central">-</text>
-                <text x="500" y="435" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="green">Utah residents (CEPH) with Northern</text>
-                <text x="500" y="460" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="green">and Western European ancestry</text>
-                <text x="800" y="410" font-size=1.5em text-anchor="middle" dominant-baseline="central">51%</text>
-                <text x="200" y="560" font-size=1.5em text-anchor="middle" dominant-baseline="central" id="kg_answer2_table">X%</text>
-                <text x="500" y="535" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="red">African Caribbean in Barbados</text>
-                <text x="500" y="560" font-size=0.7em text-anchor="middle" dominant-baseline="central">-</text>
-                <text x="500" y="585" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="blue">Mexican Ancestry in Los Angeles,</text>
-                <text x="500" y="610" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="blue">California</text>
-                <text x="800" y="560" font-size=1.5em text-anchor="middle" dominant-baseline="central">52%</text>
+                <text x="200" y="250" text-anchor="middle" dominant-baseline="central">Your Guess</text>
+                <text x="800" y="235" text-anchor="middle" dominant-baseline="central">1000 Genomes</text>
+                <text x="800" y="265" text-anchor="middle" dominant-baseline="central">Project</text>
+
+                <text x="200" y="360" font-size=1.5em text-anchor="middle" dominant-baseline="central" id="kg_answer1_table">X%</text>
+                <text x="500" y="335" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="red">African Caribbean in Barbados</text>
+                <text x="500" y="360" font-size=0.7em text-anchor="middle" dominant-baseline="central">-</text>
+                <text x="500" y="385" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="green">Utah residents (CEPH) with Northern</text>
+                <text x="500" y="410" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="green">and Western European ancestry</text>
+                <text x="800" y="360" font-size=1.5em text-anchor="middle" dominant-baseline="central">51%</text>
+
+                <text x="200" y="535" font-size=1.5em text-anchor="middle" dominant-baseline="central" id="kg_answer2_table">X%</text>
+                <text x="500" y="510" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="red">African Caribbean in Barbados</text>
+                <text x="500" y="535" font-size=0.7em text-anchor="middle" dominant-baseline="central">-</text>
+                <text x="500" y="560" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="blue">Mexican Ancestry in Los Angeles,</text>
+                <text x="500" y="585" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="blue">California</text>
+                <text x="800" y="535" font-size=1.5em text-anchor="middle" dominant-baseline="central">52%</text>
+
                 <text x="200" y="710" font-size=1.5em text-anchor="middle" dominant-baseline="central" id="kg_answer3_table">X%</text>
                 <text x="500" y="660" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="green">Utah residents (CEPH) with Northern</text>
                 <text x="500" y="685" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="green">and Western European ancestry</text>
@@ -147,10 +156,10 @@
                 </g>
                 <g class="kg_stage2">
                     <g>
-                        <line x1="400" y1="565" x2="425" y2="590" stroke="black" stroke-width="1"></line>
-                        <line x1="425" y1="590" x2="450" y2="590" stroke="black" stroke-width="1"></line>
-                        <text x="560" y="575" text-anchor="middle" dominant-baseline="central" font-size="0.7em">Common variants</text>
-                        <text x="560" y="600" text-anchor="middle" dominant-baseline="central" font-size="0.7em">(~10 million sites)</text>
+                        <line x1="400" y1="510" x2="425" y2="535" stroke="black" stroke-width="1"></line>
+                        <line x1="425" y1="535" x2="450" y2="535" stroke="black" stroke-width="1"></line>
+                        <text x="560" y="520" text-anchor="middle" dominant-baseline="central" font-size="0.7em">Common variants</text>
+                        <text x="560" y="545" text-anchor="middle" dominant-baseline="central" font-size="0.7em">(~10 million sites)</text>
                     </g>
                 </g>
                 <g class="kg_stage3">
@@ -210,7 +219,7 @@
         create_circle("genome_circle", 500, 500, 467.5491/2);
         create_circle("variants_circle", 400, 500, 54.2945/2, "rgba(255,0,0,0.2)");
         
-        create_circle("common_circle", 400, 555, 27.4473/2, "rgba(0,0,255,0.2)");
+        create_circle("common_circle", 400, 500, 27.4473/2, "rgba(0,0,255,0.2)");
 
 
         var ACB_radius = 213.02/2;
@@ -227,6 +236,7 @@
             550,
             ACB_radius,
             "rgba(255,0,0,0.2)",
+            "kg4_submit",
             3,
             "ACB_CEU_CEU",
             550,
@@ -239,6 +249,7 @@
             550,
             CEU_radius,
             "rgba(0,255,0,0.2)",
+            "kg4_submit",
             3,
             "ACB_CEU_ACB",
             500,
@@ -252,6 +263,7 @@
             550,
             ACB_radius,
             "rgba(255,0,0,0.2)",
+            "kg5_submit",
             3,
             "ACB_MXL_MXL",
             550,
@@ -264,6 +276,7 @@
             550,
             MXL_radius,
             "rgba(0,0,255,0.2)",
+            "kg5_submit",
             3,
             "ACB_MXL_ACB",
             500,
@@ -277,6 +290,7 @@
             550,
             CEU_radius,
             "rgba(0,255,0,0.2)",
+            "kg6_submit",
             3,
             "CEU_MXL_MXL",
             550,
@@ -289,6 +303,7 @@
             550,
             MXL_radius,
             "rgba(0,0,255,0.2)",
+            "kg6_submit",
             3,
             "CEU_MXL_CEU",
             500,
@@ -313,13 +328,8 @@
 
         d3.select("#kg1_next")
             .on("click", function(event, d) {
-                d3.selectAll("#genome_circle").transition().attr("transform", "translate(0, 55)");
-                d3.selectAll("#variants_circle").transition().attr("transform", "translate(0, 55)");
 
                 d3.selectAll("#variants_circle>path").style("fill", "none");
-
-                d3.selectAll("#measureable").transition().attr("transform", "translate(0, 55)");
-                d3.selectAll("#observed").transition().attr("transform", "translate(0, 55)");
                 
                 d3.selectAll(".kg_stage1").style("display", "none");
                 d3.selectAll(".kg_stage2").style("display", "block").transition().style("opacity", "1");
@@ -357,6 +367,11 @@
                 d3.selectAll(".kg_stage7").style("display", "block").transition().style("opacity", "1");
                 d3.select("#kg_answer3_table").text(d3.select("#kg_answer3").text());
             });
+
+        //d3.select("#kg7_next")
+        //    .on("click", function(event, d) {
+        //        $(".carousel").carousel("next");
+        //    });
         
     </script>
 </div>

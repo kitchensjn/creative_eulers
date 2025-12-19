@@ -12,6 +12,12 @@
         opacity: 0;
         transition: 1s;
     }
+
+    #byo0_guess, #byo1_guess {
+        display: none;
+        opacity: 0;
+        transition: 1s;
+    }
 </style>
 
 <div id="build_your_own" class="carousel-item full grid-background">
@@ -26,7 +32,7 @@
             </g>
         </g>
 
-        <g class="diagram">
+        <g class="diagram" transform="translate(0, 50)">
             <g class="numbers">
                 <text class="byo_stage0 byo_stage1" x="500" y="250" text-anchor="middle" dominant-baseline="central" font-size=1.5em>20%</text>
                 <text class="byo_stage2 byo_stage3" x="500" y="250" text-anchor="middle" dominant-baseline="central" font-size=1.5em>70%</text>
@@ -62,8 +68,8 @@
 
     <script>
 
-        create_interactive_circle("byo0_red_circle", 400, 500, 190, "rgba(255,0,0,0.2)");
-        create_interactive_circle("byo0_blue_circle", 600, 500, 190, "rgba(0,0,255,0.2)");
+        create_interactive_circle("byo0_red_circle", 400, 500, 190, "rgba(255,0,0,0.2)", "byo0_guess");
+        create_interactive_circle("byo0_blue_circle", 600, 500, 190, "rgba(0,0,255,0.2)", "byo0_guess");
 
         d3.selectAll(".byo_stage0").style("display", "block");
         d3.selectAll(".byo_stage0").style("opacity", "1");
@@ -93,8 +99,8 @@
                 d3.selectAll(".byo_stage2").style("display", "block").transition().style("opacity", "1");
             });
 
-        create_interactive_circle("byo1_red_circle", 400, 500, 190, "rgba(255,0,0,0.2)");
-        create_interactive_circle("byo1_blue_circle", 600, 500, 190, "rgba(0,0,255,0.2)");
+        create_interactive_circle("byo1_red_circle", 400, 500, 190, "rgba(255,0,0,0.2)", "byo1_guess");
+        create_interactive_circle("byo1_blue_circle", 600, 500, 190, "rgba(0,0,255,0.2)", "byo1_guess");
 
         create_button("byo1_0_buttons", "byo1_guess", "Submit", 425, 900, 150, 50);
         d3.select("#byo1_guess")

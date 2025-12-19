@@ -1,0 +1,36 @@
+<style>
+    #codeword:hover {
+        cursor: pointer;
+    }
+</style>
+
+<div id="finished" class="carousel-item full grid-background">
+
+    <svg class="figure" viewBox="0 0 1000 1000">
+
+        <g class="text-content">
+            <g>
+                <text x="100" y="100"><tspan font-weight="bold">Thank you for completing this activity!</tspan> To receive</text>
+                <text x="100" y="150">homework points, please copy the following unique</text>
+                <text x="100" y="200">codeword and submit it via the corresponding</text>
+                <text x="100" y="250">assignment on Canvas.</text>
+                <text id="codeword" x="500" y="350" text-anchor="middle" dominant-baseline="central" font-size="1.5em" fill="blue">X</text>
+                <text id="copied" x="500" y="400" text-anchor="middle" dominant-baseline="central" font-size="0.7em">Click the codeword to copy it to your clipboard.</text>
+                <text x="100" y="600"><tspan font-weight="bold">Interested in learning more?</tspan> Check out this <a xlink:href="https://james-kitchens.com/blog/visualizing-human-genetic-diversity" target="_blank" fill="blue"><tspan text-decoration="underline">blog post</tspan></a></text>
+                <text x="100" y="650">which served as the initial inspiration for this activity.</text>
+                <text x="100" y="800">For any questions about the content of this activity,</text>
+                <text x="100" y="850">please reach out to James Kitchens at</text>
+                <text x="100" y="900" transform="translate(325,3) skewX(-20)"><tspan font-weight="bold">jkitchens</tspan> at <tspan font-weight="bold">ucdavis.edu.</tspan></text>
+            </g>
+        </g>
+
+    </svg>
+
+    <script>
+        var codeword = randomString(6, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        d3.select("#codeword")
+            .attr("onclick", "copy_to_clipboard(codeword)")
+            .text(codeword);
+    </script>
+
+</div>

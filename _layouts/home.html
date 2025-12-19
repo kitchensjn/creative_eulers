@@ -309,7 +309,7 @@
                     });
             }
 
-            function create_slider(id, target) {
+            function create_slider(id, target, submit) {
                 var bar_container = document.getElementById(id+"_bar");
                 var rc = rough.svg(bar_container);
                 var bar = rc.rectangle(200, 750, 600, 50, {
@@ -348,6 +348,7 @@
 
                 function dragend(event, d) {
                     d3.select(this).style("cursor", "grab");
+                    d3.select("#"+submit).style("display", "block").transition().style("opacity", "1");
                 }
             }
 
@@ -459,6 +460,7 @@
                 y,
                 r,
                 c=false,
+                submit=false,
                 s=3,
                 p_id=false,
                 p_x=false,
@@ -491,6 +493,9 @@
 
                 function dragend(event, d) {
                     d3.select(this).style("cursor", "grab");
+                    if (submit != false) {
+                        d3.select("#"+submit).style("display", "block").transition().style("opacity", "1");
+                    }
                 }
             }
 
@@ -534,9 +539,30 @@
                 return Math.random() * (max - min) + min
             }
 
+            function randomString(length, chars) {
+                var result = '';
+                for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+                return result;
+            }
+
+            function copy_to_clipboard(value) {
+                navigator.clipboard.writeText(value);
+                d3.select("#copied").text("Copied!");
+            }
+
         </script>
         <form name="submit-to-google-sheet" id="form">
             <div id="carousel" class="carousel carousel-dark slide full" data-bs-touch="false" data-bs-ride="false" data-bs-wrap="false">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                </div>
                 <div class="carousel-inner full">
                     {%- include slides/welcome.html -%}
                     {%- include slides/introduction/main.html -%}
@@ -545,6 +571,7 @@
                     {%- include slides/build_your_own/main.html -%}
                     {%- include slides/genetics_background/main.html -%}
                     {%- include slides/1KGP/main.html -%}
+                    {%- include slides/finished/main.html -%}
                 </div>
             </div>
         </form>
