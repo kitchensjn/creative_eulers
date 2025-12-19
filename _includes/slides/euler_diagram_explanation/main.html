@@ -149,14 +149,14 @@
         create_circle("dog_circle", 0, 0, 190, "rgba(0,0,255,0.2)");
         d3.select("#dog_circle").attr("transform", "translate(600, 500)");
 
-        create_button("table_buttons", "table_next", "Next", 450, 850, 100, 50);
+        create_button("table_buttons", "table_next", "Next", 450, 900, 100, 50);
         d3.select("#table_next")
             .on("click", function(event, d) {
                 d3.selectAll(".ede_stage0").style("display", "none");
                 d3.selectAll(".ede_stage1").style("display", "block").transition().style("opacity", "1");
             });
 
-        create_button("venn_buttons", "venn_next", "Next", 450, 850, 100, 50);
+        create_button("venn_buttons", "venn_next", "Next", 450, 900, 100, 50);
         d3.select("#venn_next")
             .on("click", function(event, d) {
                 d3.selectAll(".ede_stage1").style("display", "none");
@@ -167,14 +167,14 @@
                 d3.select("#dog_circle").transition().attr("transform", "scale(1.15005105) translate(521.71597078234, 434.763308985284) translate(12.8665592714341, 0)");
             });
 
-        create_button("euler_buttons", "euler_next", "Next", 450, 850, 100, 50);
+        create_button("euler_buttons", "euler_next", "Next", 450, 900, 100, 50);
         d3.select("#euler_next")
             .on("click", function(event, d) {
                 d3.selectAll(".ede_stage2").style("display", "none");
                 d3.selectAll(".ede_stage3").style("display", "block").transition().style("opacity", "1");
             });
 
-        create_button("percentages_buttons", "percentages_next", "Next", 450, 850, 100, 50);
+        create_button("percentages_buttons", "percentages_next", "Next", 450, 900, 100, 50);
         d3.select("#percentages_next")
             .on("click", function(event, d) {
                 d3.selectAll(".ede_stage3").style("display", "none");
@@ -183,7 +183,7 @@
                 d3.select("#dog_circle").transition().attr("transform", "scale(1.15005105) translate(434.763308985284, 434.763308985284)");
             });
         
-        create_button("clarification_buttons", "clarification_next", "Next", 450, 850, 100, 50);
+        create_button("clarification_buttons", "clarification_next", "Next", 450, 900, 100, 50);
         d3.select("#clarification_next")
             .on("click", function(event,d) {
                     $(".carousel").carousel("next");

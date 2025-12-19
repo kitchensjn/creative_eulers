@@ -68,7 +68,7 @@
         d3.selectAll(".byo_stage0").style("display", "block");
         d3.selectAll(".byo_stage0").style("opacity", "1");
 
-        create_button("byo0_0_buttons", "byo0_guess", "Submit", 425, 850, 150, 50);
+        create_button("byo0_0_buttons", "byo0_guess", "Submit", 425, 900, 150, 50);
         d3.select("#byo0_guess")
             .on("click", function(event, d) {
                 var r_t = get_translation_value("#byo0_red_circle");
@@ -86,7 +86,7 @@
                 );
             });
 
-        create_button("byo0_1_buttons", "byo0_next", "Next", 450, 850, 100, 50);
+        create_button("byo0_1_buttons", "byo0_next", "Next", 450, 900, 100, 50);
         d3.select("#byo0_next")
             .on("click", function(event, d) {
                 d3.selectAll(".byo_stage1").style("display", "none");
@@ -96,7 +96,7 @@
         create_interactive_circle("byo1_red_circle", 400, 500, 190, "rgba(255,0,0,0.2)");
         create_interactive_circle("byo1_blue_circle", 600, 500, 190, "rgba(0,0,255,0.2)");
 
-        create_button("byo1_0_buttons", "byo1_guess", "Submit", 425, 850, 150, 50);
+        create_button("byo1_0_buttons", "byo1_guess", "Submit", 425, 900, 150, 50);
         d3.select("#byo1_guess")
             .on("click", function(event, d) {
                 var r_t = get_translation_value("#byo1_red_circle");
@@ -114,7 +114,7 @@
                 );
             });
 
-        create_button("byo1_1_buttons", "byo1_next", "Next", 450, 850, 100, 50);
+        create_button("byo1_1_buttons", "byo1_next", "Next", 450, 900, 100, 50);
         d3.select("#byo1_next")
             .on("click", function(event, d) {
                 $(".carousel").carousel("next");

@@ -51,14 +51,14 @@
     <script>
 
 
-        create_button("intro_buttons", "intro_next", "Next", 450, 850, 100, 50);
+        create_button("intro_buttons", "intro_next", "Next", 450, 900, 100, 50);
         d3.select("#intro_next")
             .on("click", function(event,d) {
                     d3.selectAll(".in_stage0").style("display", "none");
                     d3.selectAll(".in_stage1").style("display", "block").transition().style("opacity", "1");
                 });
 
-        create_button("overview_buttons", "overview_next", "Next", 450, 850, 100, 50);
+        create_button("overview_buttons", "overview_next", "Next", 450, 900, 100, 50);
         d3.select("#overview_next")
             .on("click", function(event,d) {
                     $(".carousel").carousel("next");
