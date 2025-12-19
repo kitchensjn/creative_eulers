@@ -1,3 +1,15 @@
+<style>
+    #begin_activity {
+        display: none;
+        opacity: 0;
+        transition: 1s;
+    }
+
+    #welcome-text {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+</style>
+
 <div class="carousel-item active full">
     <div id="welcome" class="full">
         <div id="welcome-text">
@@ -19,7 +31,12 @@
             </div>
             <p class="desc">Even if you do not meet these requirements or do not wish to participate in the study, you can still walk through the activity! In that case, your responses will not be recorded, and study specific content will be skipped.<br><br>You will receive a code at the end of the exercise as proof of completion. If this activity has been optionally assigned as part of your course at UCD, you will need to submit this code to the corresponding assignment on your class Canvas page to receive credit. Your performance in this activity will not be graded on correctness, and once you submit your answers to a given set of questions, you will not be able to change them.<br><br>If you have any questions, please reach out to James Kitchens (jkitchens <span style="font-style: italic;">at</span> ucdavis.edu) or Dr. Graham Coop (gmcoop <span style="font-style: italic;">at</span> ucdavis.edu).<br><br>Thank you,<br>James Kitchens and Graham Coop<br>Coop Lab, 3342 Storer Hall</p>
         </div>
-        <svg id="welcome_next"></svg>
+        <svg id="welcome_next">
+            <g id="instructions">
+                <text x="0" y="75" font-size="1.5em">Scroll to the bottom of the</text>
+                <text x="0" y="100" font-size="1.5em">introduction...</text>
+            </g>
+        </svg>
     </div>
     <script>
         create_button("welcome_next", "begin_activity", "Begin Activity", 25, 50, 250, 50);
@@ -27,5 +44,18 @@
             .on("click", function(event,d) {
                     $(".carousel").carousel("next");
                 });
+        
+        function difference(first,sec){
+            return Math.abs(first-sec);
+        }
+
+        document.getElementById("welcome-text").addEventListener("scroll", function() {
+            var diff = difference((this.scrollTop+this.clientHeight),(this.scrollHeight));
+            
+            if(diff < 5) {
+                d3.select("#instructions").style("display", "none").style("opacity", "0");
+                d3.select("#begin_activity").style("display", "block").transition().style("opacity", "1");
+            }
+        });
         </script>
 </div>
