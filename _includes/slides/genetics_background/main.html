@@ -116,23 +116,23 @@
             .attr("dominant-baseline", "central")
             .text("Only Genetics");
 
-        create_5_option_likert("likert", "1", "HEIGHT", 500, 500, 75);
-        create_5_option_likert("likert", "2", "BIPOLAR DISORDER", 500, 500, 75);
-        create_5_option_likert("likert", "3", "DIABETES", 500, 500, 75);
-        create_5_option_likert("likert", "4", "COLOR BLINDNESS", 500, 500, 75);
-        create_5_option_likert("likert", "5", "SCHIZOPHRENIA", 500, 500, 75);
-        create_5_option_likert("likert", "6", "ALCOHOLISM", 500, 500, 75);
-        create_5_option_likert("likert", "7", "BREAST CANCER", 500, 500, 75);
-        create_5_option_likert("likert", "8", "INTEREST IN FASHION", 500, 500, 75);
-        create_5_option_likert("likert", "9", "ADDICTION TO GAMBLING", 500, 500, 75);
-        create_5_option_likert("likert", "10", "POLITICAL BELIEFS", 500, 500, 75);
-        create_5_option_likert("likert", "11", "INTELLIGENCE IN ADULTS", 500, 500, 75);
-        create_5_option_likert("likert", "12", "SEVERE DEPRESSION", 500, 500, 75);
-        create_5_option_likert("likert", "13", "ATTENTION DEFICIT HYPERACTIVITY DISORDER", 500, 500, 75);
-        create_5_option_likert("likert", "14", "ASTHMA", 500, 500, 75);
-        create_5_option_likert("likert", "15", "VIOLENT BEHAVIOR", 500, 500, 75);
-        create_5_option_likert("likert", "16", "RELIGIOUS BELIEFS", 500, 500, 75);
-        create_5_option_likert("likert", "17", "BLOOD GROUP (ABO)", 500, 500, 75);
+        create_5_option_likert("likert", "1", "HEIGHT", 500, 550, 75);
+        create_5_option_likert("likert", "2", "BIPOLAR DISORDER", 500, 550, 75);
+        create_5_option_likert("likert", "3", "DIABETES", 500, 550, 75);
+        create_5_option_likert("likert", "4", "COLOR BLINDNESS", 500, 550, 75);
+        create_5_option_likert("likert", "5", "SCHIZOPHRENIA", 500, 550, 75);
+        create_5_option_likert("likert", "6", "ALCOHOLISM", 500, 550, 75);
+        create_5_option_likert("likert", "7", "BREAST CANCER", 500, 550, 75);
+        create_5_option_likert("likert", "8", "INTEREST IN FASHION", 500, 550, 75);
+        create_5_option_likert("likert", "9", "ADDICTION TO GAMBLING", 500, 550, 75);
+        create_5_option_likert("likert", "10", "POLITICAL BELIEFS", 500, 550, 75);
+        create_5_option_likert("likert", "11", "INTELLIGENCE IN ADULTS", 500, 550, 75);
+        create_5_option_likert("likert", "12", "SEVERE DEPRESSION", 500, 550, 75);
+        create_5_option_likert("likert", "13", "ATTENTION DEFICIT HYPERACTIVITY DISORDER", 500, 550, 75);
+        create_5_option_likert("likert", "14", "ASTHMA", 500, 550, 75);
+        create_5_option_likert("likert", "15", "VIOLENT BEHAVIOR", 500, 550, 75);
+        create_5_option_likert("likert", "16", "RELIGIOUS BELIEFS", 500, 550, 75);
+        create_5_option_likert("likert", "17", "BLOOD GROUP (ABO)", 500, 550, 75);
         
         d3.select("#gb0_next")
             .on("click", function(event, d) {
@@ -151,7 +151,7 @@
                 d3.selectAll(".gb_stage2").style("display", "none");
                 d3.selectAll(".gb_stage3").style("display", "block").transition().style("opacity", "1");
                 d3.select("#trait1").style("display", "block").transition().style("opacity", "1");
-                d3.selectAll("#spectrum>text").transition().attr("y", "625");
+                d3.selectAll("#spectrum>text").transition().attr("y", "675");
             })
         
         
