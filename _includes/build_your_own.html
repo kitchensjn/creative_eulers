@@ -22,6 +22,11 @@
 
 <div id="build_your_own" class="carousel-item full grid-background">
 
+    <div class="form-responses">
+        <input type="hidden" id="build_your_own_overlap0" name="build_your_own_overlap0">
+        <input type="hidden" id="build_your_own_overlap1" name="build_your_own_overlap1">
+    </div>
+
     <svg class="figure" viewBox="0 0 1000 1000">
 
         <g class="text-content">
@@ -79,7 +84,9 @@
             .on("click", function(event, d) {
                 var r_t = get_translation_value("#byo0_red_circle");
                 var b_t = get_translation_value("#byo0_blue_circle");
-                d3.select("#byo_answer1").text(String(Math.round((calc_percentage_overlap(400+r_t, 190, 600+b_t, 190) * 100))) + "%");
+                var overlap = String(Math.round((calc_percentage_overlap(400+r_t, 190, 600+b_t, 190) * 100))) + "%";
+                d3.select("#byo_answer1").text(overlap);
+                d3.select("#build_your_own_overlap0").attr("value", overlap);
                 d3.selectAll(".byo_stage0").style("display", "none");
                 d3.selectAll(".byo_stage1").style("display", "block").transition().style("opacity", "1");
                 d3.select("#byo0_red_circle").attr("class", "static").style("cursor", "default");
@@ -107,7 +114,9 @@
             .on("click", function(event, d) {
                 var r_t = get_translation_value("#byo1_red_circle");
                 var b_t = get_translation_value("#byo1_blue_circle");
-                d3.select("#byo_answer2").text(String(Math.round((calc_percentage_overlap(400+r_t, 190, 600+b_t, 190) * 100))) + "%");
+                var overlap = String(Math.round((calc_percentage_overlap(400+r_t, 190, 600+b_t, 190) * 100))) + "%";
+                d3.select("#byo_answer2").text(overlap);
+                d3.select("#build_your_own_overlap1").attr("value", overlap);
                 d3.selectAll(".byo_stage2").style("display", "none");
                 d3.selectAll(".byo_stage3").style("display", "block").transition().style("opacity", "1");
                 d3.select("#byo1_red_circle").attr("class", "static").style("cursor", "default");
@@ -125,6 +134,7 @@
             .on("click", function(event, d) {
                 $(".carousel").carousel("next");
                 
+                /*
                 setTimeout(function() {
                     d3.selectAll(".byo_stage0,.byo_stage2,.byo_stage3").style("display", "none").style("opacity", "0");
                     d3.selectAll(".byo_stage1").style("display", "block").transition().style("opacity", "1");
@@ -136,6 +146,7 @@
                         });
 
                 }, 1000);
+                */
             });
     </script>
 

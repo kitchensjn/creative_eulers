@@ -22,6 +22,11 @@
 
 <div id="interpretability" class="carousel-item full grid-background">
 
+    <div class="form-responses">
+        <input type="hidden" id="interpretability_overlap0" name="interpretability_overlap0">
+        <input type="hidden" id="interpretability_overlap1" name="interpretability_overlap1">
+    </div>
+
     <svg class="figure" viewBox="0 0 1000 1000">
     
         <g class="text-content">
@@ -97,8 +102,8 @@
         d3.select("#left_circle").transition().attr("transform", "translate(400, 500)");
         d3.select("#right_circle").transition().attr("transform", "translate(600, 500)");
 
-        create_slider("example0", "overlap0", "example0_guess");
-        create_slider("example1", "overlap1", "example1_guess");
+        create_slider("example0", "overlap0", "example0_guess", "interpretability_overlap0");
+        create_slider("example1", "overlap1", "example1_guess", "interpretability_overlap1");
 
         create_button("example0_0_buttons", "example0_guess", "Submit", 425, 900, 150, 50);
         d3.select("#example0_guess")
@@ -129,6 +134,7 @@
                 
                 $(".carousel").carousel("next");
                 
+                /*
                 setTimeout(function() {
                     d3.selectAll(".i_stage0,.i_stage2,.i_stage3").style("display", "none").style("opacity", "0");
                     d3.selectAll(".i_stage1").style("display", "block").transition().style("opacity", "1");
@@ -144,6 +150,7 @@
                         });
 
                 }, 1000);
+                */
             });
 
     </script>

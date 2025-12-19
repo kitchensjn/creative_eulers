@@ -309,7 +309,7 @@
                     });
             }
 
-            function create_slider(id, target, submit) {
+            function create_slider(id, target, submit, form) {
                 var bar_container = document.getElementById(id+"_bar");
                 var rc = rough.svg(bar_container);
                 var bar = rc.rectangle(200, 750, 600, 50, {
@@ -343,7 +343,9 @@
                 function dragged(event, d) {
                     var cursor_pos = Math.min(Math.max(200, event.x), 800)
                     d3.select(this).attr("transform", "translate(" + String(cursor_pos-500) + ")");
-                    d3.select("#"+target).text(String(Math.round((cursor_pos-200)/(800-200)*100))+"%");
+                    var overlap = String(Math.round((cursor_pos-200)/(800-200)*100))+"%";
+                    d3.select("#"+target).text(overlap);
+                    d3.select("#"+form).attr("value", overlap);
                 }
 
                 function dragend(event, d) {
@@ -382,19 +384,22 @@
                             d3.select(this).selectAll("text").attr("fill", "black");
                         })
                         .on("click", function(event, d) {
+                            d3.select("#genetics_background_likert"+trait_num).attr("value", i+1);
                             if (trait_num < 17) {
                                 d3.select("#"+id).style("display", "none").style("opacity", "0");
                                 var next_num = Number(trait_num) + 1;
                                 d3.select("#trait"+next_num).style("display", "block").transition().style("opacity", "1");
                             } else {
                                 $(".carousel").carousel("next");
-                                
+
+                                /*
                                 setTimeout(function() {
                                     d3.select("#"+id).style("display", "none").style("opacity", "0");
                                     d3.selectAll(".gb_stage1,.gb_stage2,.gb_stage3").style("display", "none").style("opacity", "0");
                                     d3.selectAll(".gb_stage0").style("display", "block").transition().style("opacity", "1");
                                     d3.selectAll("#spectrum>text").transition().attr("y", "500");
                                 }, 1000);
+                                */
                             }
                         });
                     
@@ -553,6 +558,16 @@
         </script>
         <form name="submit-to-google-sheet" id="form">
             <div id="carousel" class="carousel carousel-dark slide full" data-bs-touch="false" data-bs-ride="false" data-bs-wrap="false">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                </div>
                 <div class="carousel-inner full">
                     {%- include welcome.html -%}
                     {%- include introduction.html -%}
@@ -566,5 +581,19 @@
             </div>
         </form>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        
+        <script>
+            const scriptURL = "https://script.google.com/macros/s/AKfycbxqy4DOKc8HvDBCohiCgcavqbKWrETR5qPLF3apa6nzn2liAgR0l-HaRcBOtqowTaUl/exec";
+            const form = document.forms["submit-to-google-sheet"];
+
+            form.addEventListener("submit", e => {
+                e.preventDefault();
+                
+                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                    .then(response => console.log("Success"))
+                    .catch(error => console.error('Error!', error.message));
+            });
+        </script>
+
     </body>
 </html>

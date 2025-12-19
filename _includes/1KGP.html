@@ -13,6 +13,13 @@
 </style>
 
 <div id="thousand_genomes" class="carousel-item full grid-background">
+
+    <div class="form-responses">
+        <input type="hidden" id="thousand_genomes_overlap0" name="thousand_genomes_overlap0">
+        <input type="hidden" id="thousand_genomes_overlap1" name="thousand_genomes_overlap1">
+        <input type="hidden" id="thousand_genomes_overlap2" name="thousand_genomes_overlap2">
+    </div>
+
     <svg class="figure" viewBox="0 0 1000 1000">
         <g class="text-content">
             <g class="kg_stage0">
@@ -211,6 +218,8 @@
         </g>
     </svg>
 
+    <button id="submit_form" type="submit"></button>
+
     <script>
         d3.selectAll(".kg_stage0").style("display", "block");
         d3.selectAll(".kg_stage0").style("opacity", "1");
@@ -352,6 +361,7 @@
                 d3.selectAll(".kg_stage4").style("display", "none");
                 d3.selectAll(".kg_stage5").style("display", "block").transition().style("opacity", "1");
                 d3.select("#kg_answer1_table").text(d3.select("#kg_answer1").text());
+                d3.select("#thousand_genomes_overlap0").attr("value", d3.select("#kg_answer1").text())
             });
         
         d3.select("#kg5_submit")
@@ -359,6 +369,7 @@
                 d3.selectAll(".kg_stage5").style("display", "none");
                 d3.selectAll(".kg_stage6").style("display", "block").transition().style("opacity", "1");
                 d3.select("#kg_answer2_table").text(d3.select("#kg_answer2").text());
+                d3.select("#thousand_genomes_overlap1").attr("value", d3.select("#kg_answer2").text())
             });
 
         d3.select("#kg6_submit")
@@ -366,11 +377,13 @@
                 d3.selectAll(".kg_stage6").style("display", "none");
                 d3.selectAll(".kg_stage7").style("display", "block").transition().style("opacity", "1");
                 d3.select("#kg_answer3_table").text(d3.select("#kg_answer3").text());
+                d3.select("#thousand_genomes_overlap2").attr("value", d3.select("#kg_answer3").text())
             });
 
         d3.select("#kg7_next")
             .on("click", function(event, d) {
                 $(".carousel").carousel("next");
+                document.getElementById("submit_form").click();
             });
         
     </script>

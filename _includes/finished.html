@@ -6,6 +6,10 @@
 
 <div id="finished" class="carousel-item full grid-background">
 
+    <div class="form-responses">
+        <input type="hidden" id="finished_codeword" name="finished_codeword">
+    </div>
+
     <svg class="figure" viewBox="0 0 1000 1000">
 
         <g class="text-content">
@@ -31,6 +35,7 @@
         d3.select("#codeword")
             .attr("onclick", "copy_to_clipboard(codeword)")
             .text(codeword);
+        d3.select("#finished_codeword").attr("value", codeword);
     </script>
 
 </div>
