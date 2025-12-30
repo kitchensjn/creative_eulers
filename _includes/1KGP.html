@@ -23,29 +23,30 @@
     <svg class="figure" viewBox="0 0 1000 1000">
         <g class="text-content">
             <g class="kg_stage0">
-                <text x="100" y="100">The 1000 Genomes Project sampled individuals from</text>
+                <text x="100" y="100">The 1000 Genomes Project sampled people from</text>
                 <text x="100" y="150">around the world, including 609 individuals from</text>
-                <text x="100" y="200">seven groups in the Americas. The rest of this</text>
-                <text x="100" y="250">activity will focus on these individuals.</text>
+                <text x="100" y="200">seven regions in the Americas. The rest of this</text>
+                <text x="100" y="250">activity will focus on these people.</text>
                 <text x="500" y="500" text-anchor="middle" dominant-baseline="central">ADD MAP</text>
             </g>
             <g class="kg_stage1">
-                <text x="100" y="100">Across the 609 individuals from the Americas, the</text>
+                <text x="100" y="100">Across the 609 people from the Americas, the</text>
                 <text x="100" y="150"><tspan font-weight="bold">majority of sites between their genomes are not</tspan></text>
                 <text x="100" y="200"><tspan font-weight="bold">polymorphic.</tspan></text>
             </g>
             <g class="kg_stage2">
-                <text x="100" y="100">Even when the site is polymorphic, <tspan font-weight="bold">the mutation is</tspan></text>
+                <text x="100" y="100">Even when the site is polymorphic, <tspan font-weight="bold">the variant is</tspan></text>
                 <text x="100" y="150"><tspan font-weight="bold">often found at a low frequency</tspan>. Here, we observe</text>
-                <text x="100" y="200">only 10 million sites where the mutation is found</text>
-                <text x="100" y="250">at >5% in any of the Americas' subgroups.</text>
+                <text x="100" y="200">only 10 million sites where the variant is found</text>
+                <text x="100" y="250">at >5% ("common") in any of the sampled regions.</text>
             </g>
             <g class="kg_stage3">
-                <text x="100" y="100">For these three subgroups from the Americas, <tspan font-weight="bold">each</tspan></text>
-                <text x="100" y="150"><tspan font-weight="bold">circle is sized proportionally to the number of</tspan></text>
-                <text x="100" y="200"><tspan font-weight="bold">common variants</tspan> found in that subgroup. We are</text>
-                <text x="100" y="250">going to create Euler diagrams for the three different</text>
-                <text x="100" y="300">pairings of these subgroups.</text>
+                <text x="100" y="100">For the following three sample groups, <tspan font-weight="bold">each circle</text>
+                <text x="100" y="150"><tspan font-weight="bold">is sized proportionally to the number of common</tspan></text>
+                <text x="100" y="200"><tspan font-weight="bold">variants</tspan> within that sample group. For the final</text>
+                <text x="100" y="250">part of this activity, you are going to create Euler</text>
+                <text x="100" y="300">diagrams for the three different pairings of</text>
+                <text x="100" y="350">these sample groups.</text>
             </g>
             <g class="kg_stage4 kg_stage5 kg_stage6">
                 <text x="100" y="100"><tspan font-weight="bold">Slide the circles to estimate the amount of overlap</tspan></text>
@@ -162,7 +163,7 @@
                     </g>
                 </g>
                 <g class="kg_stage2">
-                    <g>
+                    <g id="common">
                         <line x1="400" y1="510" x2="425" y2="535" stroke="black" stroke-width="1"></line>
                         <line x1="425" y1="535" x2="450" y2="535" stroke="black" stroke-width="1"></line>
                         <text x="560" y="520" text-anchor="middle" dominant-baseline="central" font-size="0.7em">Common variants</text>
@@ -175,7 +176,11 @@
                         <line x1="300" y1="400" x2="325" y2="400" stroke="black" stroke-width="1"></line>
                         <text x="200" y="385" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="red">African Caribbean</text>
                         <text x="200" y="415" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="red">in Barbados</text>
-                        <text x="400" y="500" font-size=0.7em text-anchor="middle" dominant-baseline="central">8,018,649</text>
+                        <text x="200" y="440" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="red">-</text>
+                        <text x="200" y="465" font-size=0.6em text-anchor="middle" dominant-baseline="central" fill="red">96 people</text>
+                        <text x="400" y="475" font-size=0.7em text-anchor="middle" dominant-baseline="central">~8.0 million</text>
+                        <text x="400" y="500" font-size=0.7em text-anchor="middle" dominant-baseline="central">common</text>
+                        <text x="400" y="525" font-size=0.7em text-anchor="middle" dominant-baseline="central">variants</text>
                     </g>
                     <g>
                         <line x1="600" y1="460" x2="625" y2="435" stroke="black" stroke-width="1"></line>
@@ -183,14 +188,18 @@
                         <text x="800" y="405" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="green">Utah residents (CEPH)</text>
                         <text x="800" y="435" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="green">with Northern and Western</text>
                         <text x="800" y="465" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="green">European ancestry</text>
-                        <text x="600" y="550" font-size=0.7em text-anchor="middle" dominant-baseline="central">5,726,377</text>
+                        <text x="800" y="490" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="green">-</text>
+                        <text x="800" y="515" font-size=0.6em text-anchor="middle" dominant-baseline="central" fill="green">99 people</text>
+                        <text x="600" y="550" font-size=0.7em text-anchor="middle" dominant-baseline="central">~5.7 million</text>
                     </g>
                     <g>
                         <line x1="550" y1="715" x2="575" y2="740" stroke="black" stroke-width="1"></line>
                         <line x1="575" y1="740" x2="600" y2="740" stroke="black" stroke-width="1"></line>
                         <text x="725" y="725" text-anchor="middle" dominant-baseline="central" font-size="0.7em" fill="blue">Mexican Ancestry in</text>
                         <text x="725" y="755" text-anchor="middle" dominant-baseline="central" font-size="0.7em" fill="blue">Los Angeles, California</text>
-                        <text x="470" y="690" font-size=0.7em text-anchor="middle" dominant-baseline="central">5,663,208</text>
+                        <text x="725" y="780" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="blue">-</text>
+                        <text x="725" y="805" font-size=0.6em text-anchor="middle" dominant-baseline="central" fill="blue">64 people</text>
+                        <text x="470" y="690" font-size=0.7em text-anchor="middle" dominant-baseline="central">~5.7 million</text>
                     </g>
                 </g>
             </g>
