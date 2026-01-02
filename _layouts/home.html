@@ -385,7 +385,7 @@
                         })
                         .on("click", function(event, d) {
                             d3.select("#genetics_background_likert"+trait_num).attr("value", i+1);
-                            if (trait_num < 17) {
+                            if (trait_num < 7) {
                                 d3.select("#"+id).style("display", "none").style("opacity", "0");
                                 var next_num = Number(trait_num) + 1;
                                 d3.select("#trait"+next_num).style("display", "block").transition().style("opacity", "1");
@@ -436,7 +436,7 @@
                     .attr("y", "750")
                     .attr("text-anchor", "middle")
                     .attr("dominant-baseline", "central")
-                    .text(trait_num + " / 17");
+                    .text(trait_num + " / 7");
             }
 
             function create_circle(id, x, y, r, c=false, s=3) {
@@ -559,6 +559,7 @@
         </script>
         <form name="submit-to-google-sheet" id="form">
             <div id="carousel" class="carousel carousel-dark slide full" data-bs-touch="false" data-bs-ride="false" data-bs-wrap="false">
+                <!--
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -569,6 +570,7 @@
                     <button type="button" data-bs-target="#carousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
                     <button type="button" data-bs-target="#carousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
                 </div>
+                -->
                 <div class="carousel-inner full">
                     {%- include welcome.html -%}
                     {%- include introduction.html -%}
