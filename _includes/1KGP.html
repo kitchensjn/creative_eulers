@@ -430,6 +430,7 @@
         d3.select("#kg7_next")
             .on("click", function(event, d) {
                 $(".carousel").carousel("next");
+                d3.select("#time_spent").attr("value", Date.now() - start);
                 document.getElementById("submit_form").click();
             });
         

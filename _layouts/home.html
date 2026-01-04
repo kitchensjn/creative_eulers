@@ -563,6 +563,7 @@
 
         </script>
         <form name="submit-to-google-sheet" id="form">
+            <input type="hidden" id="time_spent" name="time_spent">
             <div id="carousel" class="carousel carousel-dark slide full" data-bs-touch="false" data-bs-ride="false" data-bs-wrap="false">
                 <!--
                 <div class="carousel-indicators">
@@ -591,6 +592,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         
         <script>
+            const start = Date.now();
             const scriptURL = "https://script.google.com/macros/s/AKfycbxtD8Wfh9iCgPsOPRDGMFs-w8_SpuMvYF5P6YnviDs7vrbEbgFBKtj_5Snsj6MlYMO7/exec";
             const form = document.forms["submit-to-google-sheet"];
 
