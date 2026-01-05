@@ -133,27 +133,39 @@
                 <text x="800" y="235" text-anchor="middle" dominant-baseline="central">1000 Genomes</text>
                 <text x="800" y="265" text-anchor="middle" dominant-baseline="central">Project</text>
 
-                <text x="200" y="360" font-size=1.5em text-anchor="middle" dominant-baseline="central" id="kg_answer1_table">X%</text>
+                <g id="guess_ACB_CEU_ACB"></g>
+                <g id="guess_ACB_CEU_CEU"></g>
+                <g id="truth_ACB_CEU_ACB"></g>
+                <g id="truth_ACB_CEU_CEU"></g>
+                <text x="60" y="360" font-size=1.5em text-anchor="middle" dominant-baseline="central" id="kg_answer1_table">X%</text>
                 <text x="500" y="335" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="rgba(255,85,0)">African Caribbean in Barbados</text>
                 <text x="500" y="360" font-size=0.7em text-anchor="middle" dominant-baseline="central">-</text>
                 <text x="500" y="385" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="rgba(255,0,141)">Utah residents (CEPH) with Northern</text>
                 <text x="500" y="410" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="rgba(255,0,141)">and Western European ancestry</text>
-                <text x="800" y="360" font-size=1.5em text-anchor="middle" dominant-baseline="central">51%</text>
+                <text id="kg_truth1_table" x="940" y="360" font-size=1.5em text-anchor="middle" dominant-baseline="central">51%</text>
 
-                <text x="200" y="535" font-size=1.5em text-anchor="middle" dominant-baseline="central" id="kg_answer2_table">X%</text>
+                <g id="guess_ACB_MXL_ACB"></g>
+                <g id="guess_ACB_MXL_MXL"></g>
+                <g id="truth_ACB_MXL_ACB"></g>
+                <g id="truth_ACB_MXL_MXL"></g>
+                <text x="60" y="535" font-size=1.5em text-anchor="middle" dominant-baseline="central" id="kg_answer2_table">X%</text>
                 <text x="500" y="510" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="rgba(255,85,0)">African Caribbean in Barbados</text>
                 <text x="500" y="535" font-size=0.7em text-anchor="middle" dominant-baseline="central">-</text>
                 <text x="500" y="560" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="rgba(86,180,233)">Mexican Ancestry in Los Angeles,</text>
                 <text x="500" y="585" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="rgba(86,180,233)">California</text>
-                <text x="800" y="535" font-size=1.5em text-anchor="middle" dominant-baseline="central">52%</text>
+                <text id="kg_truth2_table" x="940" y="535" font-size=1.5em text-anchor="middle" dominant-baseline="central">52%</text>
 
-                <text x="200" y="710" font-size=1.5em text-anchor="middle" dominant-baseline="central" id="kg_answer3_table">X%</text>
+                <g id="guess_CEU_MXL_CEU"></g>
+                <g id="guess_CEU_MXL_MXL"></g>
+                <g id="truth_CEU_MXL_CEU"></g>
+                <g id="truth_CEU_MXL_MXL"></g>
+                <text x="60" y="710" font-size=1.5em text-anchor="middle" dominant-baseline="central" id="kg_answer3_table">X%</text>
                 <text x="500" y="660" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="rgba(255,0,141)">Utah residents (CEPH) with Northern</text>
                 <text x="500" y="685" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="rgba(255,0,141)">and Western European ancestry</text>
                 <text x="500" y="710" font-size=0.7em text-anchor="middle" dominant-baseline="central">-</text>
                 <text x="500" y="735" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="rgba(86,180,233)">Mexican Ancestry in Los Angeles,</text>
                 <text x="500" y="760" font-size=0.7em text-anchor="middle" dominant-baseline="central" fill="rgba(86,180,233)">California</text>
-                <text x="800" y="710" font-size=1.5em text-anchor="middle" dominant-baseline="central">78%</text>
+                <text id="kg_truth3_table" x="940" y="710" font-size=1.5em text-anchor="middle" dominant-baseline="central">78%</text>
             </g>
             <g class="annotations">
                 <g class="kg_stage1 kg_stage2">
@@ -286,86 +298,121 @@
         create_circle("CEU_circle", 600, 550, CEU_radius, "rgba(255,0,141,0.5)");
         create_circle("MXL_circle", 470, 690, MXL_radius, "rgba(86,180,233,0.5)");
 
+
+        var ACB_start = random_between(400, 600);
+        var CEU_start = random_between(400, 600);
+        var MXL_start = random_between(400, 600);
+
         create_interactive_circle(
             "ACB_CEU_ACB",
-            500,
+            ACB_start,
             550,
             ACB_radius,
             "rgba(255,85,0,0.5)",
             "kg4_submit",
             3,
             "ACB_CEU_CEU",
-            550,
+            CEU_start,
             CEU_radius,
             "kg_answer1"
         );
         create_interactive_circle(
             "ACB_CEU_CEU",
-            550,
+            CEU_start,
             550,
             CEU_radius,
             "rgba(255,0,141,0.5)",
             "kg4_submit",
             3,
             "ACB_CEU_ACB",
-            500,
+            ACB_start,
             ACB_radius,
             "kg_answer1"
         );
 
         create_interactive_circle(
             "ACB_MXL_ACB",
-            500,
+            ACB_start,
             550,
             ACB_radius,
             "rgba(255,85,0,0.5)",
             "kg5_submit",
             3,
             "ACB_MXL_MXL",
-            550,
+            MXL_start,
             MXL_radius,
             "kg_answer2"
         );
         create_interactive_circle(
             "ACB_MXL_MXL",
-            550,
+            MXL_start,
             550,
             MXL_radius,
             "rgba(86,180,233,0.5)",
             "kg5_submit",
             3,
             "ACB_MXL_ACB",
-            500,
+            ACB_start,
             ACB_radius,
             "kg_answer2"
         );
 
         create_interactive_circle(
             "CEU_MXL_CEU",
-            500,
+            CEU_start,
             550,
             CEU_radius,
             "rgba(255,0,141,0.5)",
             "kg6_submit",
             3,
             "CEU_MXL_MXL",
-            550,
+            MXL_start,
             MXL_radius,
             "kg_answer3"
         );
         create_interactive_circle(
             "CEU_MXL_MXL",
-            550,
+            MXL_start,
             550,
             MXL_radius,
             "rgba(86,180,233,0.5)",
             "kg6_submit",
             3,
             "CEU_MXL_CEU",
-            500,
+            CEU_start,
             CEU_radius,
             "kg_answer3"
         );
+
+        
+        var truth_ACB_radius = ACB_radius/2;
+        var truth_CEU_radius = CEU_radius/2;
+        var truth_MXL_radius = MXL_radius/2;
+
+        var transform_ACB_CEU = 200-((ACB_start/2)+(CEU_start/2))/2;
+        create_circle("guess_ACB_CEU_ACB", (ACB_start/2)+transform_ACB_CEU, 360, truth_ACB_radius, "rgba(255,85,0,0.5)");
+        create_circle("guess_ACB_CEU_CEU", (CEU_start/2)+transform_ACB_CEU, 360, truth_CEU_radius, "rgba(255,0,141,0.5)");
+
+        create_circle("truth_ACB_CEU_ACB", 798, 360, truth_ACB_radius, "rgba(255,85,0,0.5)");
+        create_circle("truth_ACB_CEU_CEU", 822, 360, truth_CEU_radius, "rgba(255,0,141,0.5)");
+        d3.select("#kg_truth1_table").text(String(Math.round((calc_percentage_overlap(798, truth_ACB_radius, 822, truth_CEU_radius) * 100))) + "%");
+
+        var transform_ACB_MXL = 200-((ACB_start/2)+(MXL_start/2))/2;
+        create_circle("guess_ACB_MXL_ACB", (ACB_start/2)+transform_ACB_MXL, 535, truth_ACB_radius, "rgba(255,85,0,0.5)");
+        create_circle("guess_ACB_MXL_MXL", (MXL_start/2)+transform_ACB_MXL, 535, truth_MXL_radius, "rgba(86,180,233,0.5)");
+
+        create_circle("truth_ACB_MXL_ACB", 798.5, 535, truth_ACB_radius, "rgba(255,85,0,0.5)");
+        create_circle("truth_ACB_MXL_MXL", 821.5, 535, truth_MXL_radius, "rgba(86,180,233,0.5)");
+        d3.select("#kg_truth2_table").text(String(Math.round((calc_percentage_overlap(798.5, truth_ACB_radius, 821.5, truth_MXL_radius) * 100))) + "%");
+        
+        var transform_CEU_MXL = 200-((CEU_start/2)+(MXL_start/2))/2;
+        create_circle("guess_CEU_MXL_CEU", (CEU_start/2)+transform_CEU_MXL, 710, truth_CEU_radius, "rgba(255,0,141,0.5)");
+        create_circle("guess_CEU_MXL_MXL", (MXL_start/2)+transform_CEU_MXL, 710, truth_MXL_radius, "rgba(86,180,233,0.5)");
+        
+        create_circle("truth_CEU_MXL_CEU", 791.3+4.35, 710, truth_CEU_radius, "rgba(255,0,141,0.5)");
+        create_circle("truth_CEU_MXL_MXL", 800+4.35, 710, truth_MXL_radius, "rgba(86,180,233,0.5)");
+        d3.select("#kg_truth3_table").text(String(Math.round((calc_percentage_overlap(791.3+4.35, truth_CEU_radius, 800+4.35, truth_MXL_radius) * 100))) + "%");
+
 
         create_button("kg0_buttons", "kg0_next", "Next", 450, 900, 100, 50);
         create_button("kg1_buttons", "kg1_next", "Next", 450, 900, 100, 50);

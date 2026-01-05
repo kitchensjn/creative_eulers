@@ -493,12 +493,13 @@
                 }
 
                 function dragged(event, d) {
-                    var cursor_pos = Math.min(Math.max(200, event.x), 800)
+                    var cursor_pos = Math.min(Math.max(200, event.x), 800);
                     d3.select(this).attr("transform", "translate(" + String(cursor_pos-x) + ")");
                     if (p_id != false) {
                         var t = get_translation_value("#"+id);
                         var p_t = get_translation_value("#"+p_id);
                         d3.select("#"+target).text(String(Math.round((calc_percentage_overlap(x+t, r, p_x+p_t, p_r) * 100))) + "%");
+                        d3.select("#guess_"+id).attr("transform", "translate("+ String((cursor_pos-x)/2) + ")")
                     }
                 }
 
@@ -567,6 +568,7 @@
             <div id="carousel" class="carousel carousel-dark slide full" data-bs-touch="false" data-bs-ride="false" data-bs-wrap="false">
                 <!--
                 <div class="carousel-indicators">
+                    
                     <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
