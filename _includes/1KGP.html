@@ -471,7 +471,28 @@
                 d3.selectAll(".kg_stage6").style("display", "none");
                 d3.selectAll(".kg_stage7").style("display", "block").transition().style("opacity", "1");
                 d3.select("#kg_answer3_table").text(d3.select("#kg_answer3").text());
-                d3.select("#thousand_genomes_overlap2").attr("value", d3.select("#kg_answer3").text())
+                d3.select("#thousand_genomes_overlap2").attr("value", d3.select("#kg_answer3").text());
+                
+                var t_ACB_CEU_ACB = get_translation_value("#guess_ACB_CEU_ACB");
+                var t_ACB_CEU_CEU = get_translation_value("#guess_ACB_CEU_CEU");
+                var pos_ACB_CEU_ACB = ((ACB_start/2)+transform_ACB_CEU)+t_ACB_CEU_ACB;
+                var pos_ACB_CEU_CEU = ((CEU_start/2)+transform_ACB_CEU)+t_ACB_CEU_CEU;
+                d3.select("#guess_ACB_CEU_ACB").attr("transform", "translate("+ String((250-(pos_ACB_CEU_ACB+pos_ACB_CEU_CEU)/2)+t_ACB_CEU_ACB) + ")");
+                d3.select("#guess_ACB_CEU_CEU").attr("transform", "translate("+ String((250-(pos_ACB_CEU_ACB+pos_ACB_CEU_CEU)/2)+t_ACB_CEU_CEU) + ")");
+
+                var t_ACB_MXL_ACB = get_translation_value("#guess_ACB_MXL_ACB");
+                var t_ACB_MXL_MXL = get_translation_value("#guess_ACB_MXL_MXL");
+                var pos_ACB_MXL_ACB = ((ACB_start/2)+transform_ACB_MXL)+t_ACB_MXL_ACB;
+                var pos_ACB_MXL_MXL = ((MXL_start/2)+transform_ACB_MXL)+t_ACB_MXL_MXL;
+                d3.select("#guess_ACB_MXL_ACB").attr("transform", "translate("+ String((250-(pos_ACB_MXL_ACB+pos_ACB_MXL_MXL)/2)+t_ACB_MXL_ACB) + ")");
+                d3.select("#guess_ACB_MXL_MXL").attr("transform", "translate("+ String((250-(pos_ACB_MXL_ACB+pos_ACB_MXL_MXL)/2)+t_ACB_MXL_MXL) + ")");
+
+                var t_CEU_MXL_CEU = get_translation_value("#guess_CEU_MXL_CEU");
+                var t_CEU_MXL_MXL = get_translation_value("#guess_CEU_MXL_MXL");
+                var pos_CEU_MXL_CEU = ((CEU_start/2)+transform_CEU_MXL)+t_CEU_MXL_CEU;
+                var pos_CEU_MXL_MXL = ((MXL_start/2)+transform_CEU_MXL)+t_CEU_MXL_MXL;
+                d3.select("#guess_CEU_MXL_CEU").attr("transform", "translate("+ String((250-(pos_CEU_MXL_CEU+pos_CEU_MXL_MXL)/2)+t_CEU_MXL_CEU) + ")");
+                d3.select("#guess_CEU_MXL_MXL").attr("transform", "translate("+ String((250-(pos_CEU_MXL_CEU+pos_CEU_MXL_MXL)/2)+t_CEU_MXL_MXL) + ")");
             });
 
         d3.select("#kg7_next")
